@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 12:22:35 by averon            #+#    #+#             */
-/*   Updated: 2022/09/13 16:02:20 by averon           ###   ########.fr       */
+/*   Updated: 2022/09/22 01:39:41 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	pipex(t_core *mini)
 		pid = fork();
 		if (pid == 0)
 		{
-			ft_printf("mini.tube[0]: %d\n", mini->tube[0]);
-			ft_printf("mini.tube[1]: %d\n", mini->tube[1]);
 			dup2(fd, STDIN_FILENO);
 			if (j < mini->nb_pipe)
 				dup2(mini->tube[1], STDOUT_FILENO);

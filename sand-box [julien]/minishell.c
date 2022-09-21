@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/09/13 16:20:13 by averon           ###   ########.fr       */
+/*   Updated: 2022/09/22 01:56:11 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv, char **env)
 	{
 		mini->input = readline("minishell>");
 		ft_printf("input: %s\n", mini->input);
+		add_history(mini->input);
 		input_split(mini);
 		pipex(mini);
 		free(mini->input);
