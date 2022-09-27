@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/09/13 16:02:18 by averon           ###   ########.fr       */
+/*   Updated: 2022/09/27 13:42:48 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <readline/history.h>
 # include "libft/libft.h"
 
-
 typedef struct s_core
 {
 	char			**envp;
@@ -33,7 +32,9 @@ typedef struct s_core
 	int				tube[2];
 	int				nb_pipe;
 	char			*bin_dir;
-	char			**path_tab;			
+	char			**path_tab;
+	int				fd_input;
+	int				fd_output;			
 	//char			**exec_params;
 }t_core;
 
@@ -58,18 +59,17 @@ int		pipe_calc(char **tab);
 void	pipex(t_core *mini);
 void	ft_child_process(t_core *mini, int i);
 void	ft_parent_process(int *tube, int *fd);
+void	change_input_output(t_core *mini);
 
 // env
 
 int		nbvar_env(char **env);
 char	**init_env(char **env);
 
-
 // exec
 
 void	exec_cmd(t_core *mini, int i);
 char	*bin_dir_cat(t_core *mini);
 char	*get_path(t_core *mini);
-
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:38:11 by averon            #+#    #+#             */
-/*   Updated: 2022/09/09 14:15:21 by averon           ###   ########.fr       */
+/*   Updated: 2022/09/27 16:16:03 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ void	init_struct_var(t_core *mini, char **env)
 	mini->nb_pipe = 0;
 	mini->tab_tok = NULL;
 	mini->bin_dir = NULL;
+	mini->fd_input = STDIN_FILENO;
+	mini->fd_output = STDOUT_FILENO;
 	//mini->exec_params = NULL;
 }

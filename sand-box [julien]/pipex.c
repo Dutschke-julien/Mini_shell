@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 12:22:35 by averon            #+#    #+#             */
-/*   Updated: 2022/09/22 01:39:41 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/09/27 13:42:55 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	pipex(t_core *mini)
 		pid = fork();
 		if (pid == 0)
 		{
-			dup2(fd, STDIN_FILENO);
+			dup2(fd, mini->fd_input);
 			if (j < mini->nb_pipe)
-				dup2(mini->tube[1], STDOUT_FILENO);
+				dup2(mini->tube[1], mini->fd_output);
 			ft_child_process(mini, j);
 		}
 		else
@@ -48,5 +48,4 @@ void	ft_parent_process(int *tube, int *fd)
 	close(tube[1]);
 	*fd = tube[0];
 	wait(NULL);
-	//ft_printf("le fils a fini\n\n");
 }

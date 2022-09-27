@@ -1,0 +1,12 @@
+/*   pipex.c                                            :+:      :+:    :+:   */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   Updated: 2022/09/27 13:42:55 by jdutschk         ###   ########.fr       */
+#include "minishell.h"
+void	pipex(t_core *mini)
+			ft_child_process(mini, j);
+			ft_parent_process(mini->tube, &fd);
+void	ft_child_process(t_core *mini, int i)
+	close(mini->tube[0]);
+	exec_cmd(mini, i);
+void	ft_parent_process(int *tube, int *fd)
+	close(tube[1]);

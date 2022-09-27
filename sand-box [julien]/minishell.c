@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/09/22 12:53:27 by jdutschk         ###   ########.fr       */
+/*   Created: 2022/09/27 13:44:04 by jdutschk          #+#    #+#             */
+/*   Updated: 2022/09/27 16:17:29 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,17 @@ int	main(int argc, char **argv, char **env)
 	{
 		mini->input = readline("minishell>");
 		add_history(mini->input);
+		change_input_output(mini);
 		input_split(mini);
 		pipex(mini);
 		free(mini->input);
 	}
 	return (0);
+}
+
+void	change_input_output(t_core *mini)
+{
+	
 }
 // Récupérer en boucle l’entrée de l’utilisateur[ok]
 // argv: parametres de la foncion que l'on veut executer[ok]
