@@ -1,0 +1,23 @@
+[master af2e7a3] hello j'ai rajouter dans ma sand box de quoi mettre en place un historique valide en utilisant simplement la fonction add_history de la lib readline qui prend en argument mini-
+ Committer: Julien Dutschke <jdutschk@k0r1p13.42mulhouse.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 13 files changed, 5 insertions(+), 6 deletions(-)
+ delete mode 100644 sand-box [julien]/.DS_Store
+ rewrite sand-box [julien]/env.o (71%)
+ rewrite sand-box [julien]/init.o (67%)
+ delete mode 100644 sand-box [julien]/libft/.DS_Store
+ rewrite sand-box [julien]/minishell.o (86%)
+ rewrite sand-box [julien]/parsing.o (72%)
+ rewrite sand-box [julien]/pipex.o (90%)
+ rewrite sand-box [julien]/utils.o (65%)
