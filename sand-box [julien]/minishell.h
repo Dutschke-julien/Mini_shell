@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/09/27 13:42:48 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:15:33 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ typedef struct s_core
 	char			*bin_dir;
 	char			**path_tab;
 	int				fd_input;
-	int				fd_output;			
+	int				fd_output;
+	char			*file_input;
+	char			**files_output;			
 	//char			**exec_params;
 }t_core;
 
@@ -60,6 +62,8 @@ void	pipex(t_core *mini);
 void	ft_child_process(t_core *mini, int i);
 void	ft_parent_process(int *tube, int *fd);
 void	change_input_output(t_core *mini);
+void	last_input(t_core *mini);
+void	lst_output(t_core *mini);
 
 // env
 

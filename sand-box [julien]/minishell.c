@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 13:44:04 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/09/27 16:17:29 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:58:55 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,15 @@ int	main(int argc, char **argv, char **env)
 	{
 		mini->input = readline("minishell>");
 		add_history(mini->input);
-		change_input_output(mini);
 		input_split(mini);
-		pipex(mini);
+		//pipex(mini);
 		free(mini->input);
 	}
 	return (0);
 }
 
-void	change_input_output(t_core *mini)
-{
-	
-}
+
+
 // Récupérer en boucle l’entrée de l’utilisateur[ok]
 // argv: parametres de la foncion que l'on veut executer[ok]
 // le processus quite quand ls est terminé
