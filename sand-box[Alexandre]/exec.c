@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/09/09 16:45:07 by averon           ###   ########.fr       */
+/*   Updated: 2022/09/29 14:06:45 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,3 +68,28 @@ char	*get_path(t_core *mini)
 		free(path);
 	return (mini->tab_tok[0]);
 }
+
+void	exec_exit(t_core *mini)
+{
+	ft_putendl_fd("exit", 1);
+	free(mini->input);
+	exit(0);
+}
+
+/*void	exec_builtins(t_core *mini)
+{
+	if (str_compare(mini->tab_tok[0], "cd") == 0)
+		exec_cd(mini);
+	else if (str_compare(mini->tab_tok[0], "echo") == 0)
+		exec_echo(mini);
+	else if (str_compare(mini->tab_tok[0], "env") == 0)
+		exec_env(mini);
+	else if (str_compare(mini->tab_tok[0], "exit") == 0)
+		exec_exit(mini);
+	else if (str_compare(mini->tab_tok[0], "export") == 0)
+		exec_export(mini);
+	else if (str_compare(mini->tab_tok[0], "pwd") == 0)
+		exec_pwd(mini);
+	else if (str_compare(mini->tab_tok[0], "unset") == 0)
+		exec_unset(mini);
+}*/

@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/09/13 16:02:18 by averon           ###   ########.fr       */
+/*   Updated: 2022/09/29 13:55:27 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <readline/history.h>
 # include "libft/libft.h"
 
+int	g_exit_status;
 
 typedef struct s_core
 {
@@ -34,7 +35,6 @@ typedef struct s_core
 	int				nb_pipe;
 	char			*bin_dir;
 	char			**path_tab;			
-	//char			**exec_params;
 }t_core;
 
 // utils
@@ -63,6 +63,7 @@ void	ft_parent_process(int *tube, int *fd);
 
 int		nbvar_env(char **env);
 char	**init_env(char **env);
+void	exec_exit(t_core *mini);
 
 
 // exec
@@ -71,5 +72,9 @@ void	exec_cmd(t_core *mini, int i);
 char	*bin_dir_cat(t_core *mini);
 char	*get_path(t_core *mini);
 
+// signal
+
+void	sig_handler(int sig_num);
+void	sig_handler_redisp(int sig_num);
 
 #endif

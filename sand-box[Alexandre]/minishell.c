@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/09/13 16:20:13 by averon           ###   ########.fr       */
+/*   Updated: 2022/09/29 13:55:26 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,23 @@ int	main(int argc, char **argv, char **env)
 	init_struct_var(mini, env);
 	while (42)
 	{
+		signal(SIGINT, sig_handler_redisp);
+		signal(SIGQUIT, sig_handler_redisp);
 		mini->input = readline("minishell>");
-		ft_printf("input: %s\n", mini->input);
-		input_split(mini);
-		pipex(mini);
+		add_history(mini->input);
+		if (!mini->input)
+			exec_exit(mini);
+		else if (mini->input)
+		{
+			signal(SIGINT, sig_handler);
+			signal(SIGQUIT, SIG_IGN);
+			input_split(mini);
+			pipex(mini);
+		}
 		free(mini->input);
 	}
 	return (0);
 }
-
 
 // Récupérer en boucle l’entrée de l’utilisateur
 // argv: parametres de la foncion que l'on veut executer
@@ -40,8 +48,19 @@ int	main(int argc, char **argv, char **env)
 // avec un wait, le père attend la fin du processus fils pour se déclencher
 // utiliser des fonctions built in: execve // fork // wait
 // Path: donne les dossiers quii contiennent des binaires
-// separer parsing et execution (commandes, arguments, options , caracteres speciaux)
+// separer parsing et execution (commandes, arguments, options , caracteres
+// speciaux)
 
 
 
-
+/* 
+liste des token:
+* '\'' 		: single_quote
+* '"'		: double_quote
+* '|'		: pipe_handler
+* '<'		: less (+ double)
+* '>'		: great (+ double)
+* '\0' 		: end
+* 			: whitespace?
+* 			: char, incluant commandes, built in, arguments et erreurs (reste)
+*/

@@ -6,7 +6,7 @@
 #    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/09/08 16:39:24 by averon           ###   ########.fr        #
+#    Updated: 2022/09/29 14:08:18 by averon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS = 	minishell.c	\
 		exec.c		\
 		init.c		\
 		parsing.c	\
-		pipex.c
+		pipex.c		\
+		signal.c	
 
 OBJS = $(SRCS:.c=.o)
 
@@ -33,12 +34,12 @@ RM = rm -f
 all :		$(NAME)
 
 .c.o:
-			$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $(<:.c=.o)
+			$(CC) $(CFLAGS) -I $(HEADERS) -I$(HOME)/.brew/opt/readline/include -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS)
 			make -C libft
 			mv libft/libft.a .
-			$(CC) $(CFLAGS) $(OBJS) libft.a -lreadline -o $(NAME) 
+			$(CC) $(CFLAGS) $(OBJS) libft.a -lreadline -L/$(HOME)/.brew/opt/readline/lib -o $(NAME) 
  
 clean :
 			$(RM) $(OBJS)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/09/22 12:53:27 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/09/29 13:55:24 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,19 @@ int	main(int argc, char **argv, char **env)
 	init_struct_var(mini, env);
 	while (42)
 	{
+		signal(SIGINT, sig_handler_redisp);
+		signal(SIGQUIT, sig_handler_redisp);
 		mini->input = readline("minishell>");
 		add_history(mini->input);
-		input_split(mini);
-		pipex(mini);
+		if (!mini->input)
+			exec_exit(mini);
+		else if (mini->input)
+		{
+			signal(SIGINT, sig_handler);
+			signal(SIGQUIT, SIG_IGN);
+			input_split(mini);
+			pipex(mini);
+		}
 		free(mini->input);
 	}
 	return (0);

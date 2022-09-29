@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:38:11 by averon            #+#    #+#             */
-/*   Updated: 2022/09/09 14:15:21 by averon           ###   ########.fr       */
+/*   Updated: 2022/09/29 14:03:44 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,4 @@ void	init_struct_var(t_core *mini, char **env)
 	mini->nb_pipe = 0;
 	mini->tab_tok = NULL;
 	mini->bin_dir = NULL;
-	//mini->exec_params = NULL;
 }
