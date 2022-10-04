@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 15:37:54 by averon            #+#    #+#             */
-/*   Updated: 2022/10/03 19:19:14 by averon           ###   ########.fr       */
+/*   Created: 2022/07/20 19:27:34 by averon            #+#    #+#             */
+/*   Updated: 2022/09/30 15:48:14 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+
+#include "libft.h"
 
 void	ft_free(char **str)
 {
@@ -22,34 +23,4 @@ void	ft_free(char **str)
 	while (i >= 0)
 		free(str[i--]);
 	free(str);
-}
-
-int	ft_error(char *message)
-{
-	perror(message);
-	exit(errno);
-}
-
-void	check_tab_char(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		ft_printf("check_tab <%s>\n", tab[i]);
-		i++;
-	}
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;	
-
-	i = 0;
-	while (s1[i] && s2[i] && (s1[i] == s2[i]))
-	{
-		i++;
-	}
-	return (s1[i] - s2[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/09/29 14:06:45 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/03 19:23:35 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 void	exec_cmd(t_core *mini, int i)
 {
 	mini->tab_tok = ft_split(mini->cmd[i], ' ');
-	get_path(mini);
-	if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
+	if (exec_builtins(mini) == 1)
 	{
-		perror("pb with execve\n");
+		get_path(mini);
+		if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
+		{
+			perror("pb with execve\n");
+		}
 	}
 	ft_free(mini->tab_tok);
 }
@@ -69,27 +72,28 @@ char	*get_path(t_core *mini)
 	return (mini->tab_tok[0]);
 }
 
-void	exec_exit(t_core *mini)
+void	exit_exec(t_core *mini)
 {
 	ft_putendl_fd("exit", 1);
 	free(mini->input);
 	exit(0);
 }
 
-/*void	exec_builtins(t_core *mini)
+int	exec_builtins(t_core *mini)
 {
-	if (str_compare(mini->tab_tok[0], "cd") == 0)
-		exec_cd(mini);
-	else if (str_compare(mini->tab_tok[0], "echo") == 0)
-		exec_echo(mini);
-	else if (str_compare(mini->tab_tok[0], "env") == 0)
-		exec_env(mini);
-	else if (str_compare(mini->tab_tok[0], "exit") == 0)
-		exec_exit(mini);
-	else if (str_compare(mini->tab_tok[0], "export") == 0)
-		exec_export(mini);
-	else if (str_compare(mini->tab_tok[0], "pwd") == 0)
-		exec_pwd(mini);
-	else if (str_compare(mini->tab_tok[0], "unset") == 0)
-		exec_unset(mini);
-}*/
+	if (ft_strcmp(mini->tab_tok[0], "cd") == 0)
+		return (exec_cd(mini));
+	/*else if (ft_strcmp(mini->tab_tok[0], "echo") == 0)
+		return(exec_echo(mini));*/
+	else if (ft_strcmp(mini->tab_tok[0], "env") == 0)
+		return (exec_env(mini));
+	/*else if (ft_strcmp(mini->tab_tok[0], "exit") == 0)
+		return(exec_exit(mini));
+	else if (ft_strcmp(mini->tab_tok[0], "export") == 0)
+		return(exec_export(mini));*/
+	else if (ft_strcmp(mini->tab_tok[0], "pwd") == 0)
+		return (exec_pwd(mini));
+	else if (ft_strcmp(mini->tab_tok[0], "unset") == 0)
+		return (exec_unset(mini));
+	return (1);
+}
