@@ -1,46 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 15:37:54 by averon            #+#    #+#             */
-/*   Updated: 2022/10/03 19:19:14 by averon           ###   ########.fr       */
+/*   Created: 2021/11/18 16:54:54 by averon            #+#    #+#             */
+/*   Updated: 2022/09/30 15:48:30 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-void	ft_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
-	free(str);
-}
-
-int	ft_error(char *message)
-{
-	perror(message);
-	exit(errno);
-}
-
-void	check_tab_char(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		ft_printf("check_tab <%s>\n", tab[i]);
-		i++;
-	}
-}
+#include "libft.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {

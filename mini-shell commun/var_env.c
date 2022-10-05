@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   var_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 12:52:36 by averon            #+#    #+#             */
-/*   Updated: 2022/09/09 16:24:31 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/03 11:50:54 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int	nbvar_env(char **env)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (env[i])
 		i++;
-	//ft_printf("nombre de var env: %d\n", i);
 	return (i);
 }
 
@@ -37,10 +36,26 @@ char	**init_env(char **env)
 	while (env[i])
 	{
 		envp[i] = strdup(env[i]);
-		//ft_printf("nom var env: %s\n", envp[i]);
 		i++;
 	}
 	return (envp);
 }
 
+char	**realloc_envp(t_core *mini, size_t size)
+{
+	char	**new;
+	size_t	i;
 
+	new = (char **)malloc(sizeof(char *) * (size + 1));
+	if (new == NULL)
+		return (NULL);
+	i = 0;
+	while (mini->envp[i] && i < size)
+	{
+		new[i] = ft_strdup(mini->envp[i]);
+		i++;
+	}
+	new[size] = 0;
+	ft_free(mini->envp);
+	return (new);
+}

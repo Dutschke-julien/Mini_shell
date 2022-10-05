@@ -1,55 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 15:37:54 by averon            #+#    #+#             */
-/*   Updated: 2022/10/03 19:19:14 by averon           ###   ########.fr       */
+/*   Created: 2022/09/30 17:16:45 by averon            #+#    #+#             */
+/*   Updated: 2022/10/03 17:42:46 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-void	ft_free(char **str)
+int	exec_env(t_core *mini)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
-	free(str);
-}
-
-int	ft_error(char *message)
-{
-	perror(message);
-	exit(errno);
-}
-
-void	check_tab_char(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
+	while (mini->envp[i])
 	{
-		ft_printf("check_tab <%s>\n", tab[i]);
+		ft_printf("%s\n", mini->envp[i]);
 		i++;
 	}
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;	
-
-	i = 0;
-	while (s1[i] && s2[i] && (s1[i] == s2[i]))
-	{
-		i++;
-	}
-	return (s1[i] - s2[i]);
+	return (0);
 }

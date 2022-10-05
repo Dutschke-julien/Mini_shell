@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/09/29 13:55:24 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/03 19:22:02 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv, char **env)
 		mini->input = readline("minishell>");
 		add_history(mini->input);
 		if (!mini->input)
-			exec_exit(mini);
+			exit_exec(mini);
 		else if (mini->input)
 		{
 			signal(SIGINT, sig_handler);
