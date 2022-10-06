@@ -6,7 +6,7 @@
 #    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/10/03 10:18:41 by averon           ###   ########.fr        #
+#    Updated: 2022/10/06 14:02:53 by averon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,19 @@ SRCS = 	minishell.c	\
 		utils.c		\
 		var_env.c	\
 		exec.c		\
+		free.c		\
 		init.c		\
 		parsing.c	\
 		pipex.c		\
 		signal.c	\
-		builtins/cd.c	\
-		builtins/env.c	\
-		builtins/pwd.c	\
-		builtins/unset.c\
+		builtins/builtins_utils.c	\
+		builtins/cd.c				\
+		builtins/env.c				\
+		builtins/exit.c				\
+		builtins/pwd.c				\
+		builtins/unset.c			\
 # Builtin restant à construire:
-# echo.c exit.c	export.c
+# echo.c export.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,11 +6,20 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/03 19:22:02 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/06 15:19:54 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	handler(int signal)
+{
+	(void)signal;
+	printf("\n");
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
+}
 
 int	main(int argc, char **argv, char **env)
 {	
@@ -22,18 +31,21 @@ int	main(int argc, char **argv, char **env)
 	init_struct_var(mini, env);
 	while (42)
 	{
-		signal(SIGINT, sig_handler_redisp);
-		signal(SIGQUIT, sig_handler_redisp);
+		signal(SIGINT, handler);
+		signal(SIGQUIT, SIG_IGN);
 		mini->input = readline("minishell>");
 		add_history(mini->input);
 		if (!mini->input)
 			exit_exec(mini);
 		else if (mini->input)
 		{
-			signal(SIGINT, sig_handler);
-			signal(SIGQUIT, SIG_IGN);
+			//signal(SIGINT, sig_handler);
+			//signal(SIGQUIT, SIG_IGN);
 			input_split(mini);
-			pipex(mini);
+			if (mini->nb_pipe == 0)
+				exec_cmd_all(mini, 0);
+			else
+				pipex(mini);
 		}
 		free(mini->input);
 	}

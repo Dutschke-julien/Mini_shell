@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 12:22:35 by averon            #+#    #+#             */
-/*   Updated: 2022/10/03 19:18:42 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/06 14:01:37 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	pipex(t_core *mini)
 	}
 }
 
-void	ft_child_process(t_core *mini, int i)
+void	ft_child_process(t_core *mini, int j)
 {
 	close(mini->tube[0]);
-	exec_cmd(mini, i);
+	exec_cmd_child(mini, j);
 }
 
 void	ft_parent_process(int *tube, int *fd)
