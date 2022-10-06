@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/05 23:29:59 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/06 13:05:41 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ char *cmd_with_space(char *str, int i, int j)
             i++;
         }   
     }
+    s1[j] = '\0';
     //add free(str)
     return (s1);
 }
