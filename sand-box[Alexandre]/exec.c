@@ -6,22 +6,44 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/10/03 19:23:35 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/06 13:55:23 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_cmd(t_core *mini, int i)
+void	exec_cmd_all(t_core *mini, int i)
 {
 	mini->tab_tok = ft_split(mini->cmd[i], ' ');
-	if (exec_builtins(mini) == 1)
+	if (exec_builtins_all(mini) == 1)
 	{
 		get_path(mini);
 		if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
-		{
 			perror("pb with execve\n");
-		}
+	}
+	ft_free(mini->tab_tok);
+}
+
+void	exec_cmd_child(t_core *mini, int i)
+{
+	mini->tab_tok = ft_split(mini->cmd[i], ' ');
+	if (exec_builtins_child(mini) == 1)
+	{
+		get_path(mini);
+		if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
+			perror("pb with execve\n");
+	}
+	ft_free(mini->tab_tok);
+}
+
+void	exec_cmd_parents(t_core *mini, int i)
+{
+	mini->tab_tok = ft_split(mini->cmd[i], ' ');
+	if (!is_forked_command(mini) && exec_builtins_parent(mini) == 1)
+	{
+		get_path(mini);
+		if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
+			perror("pb with execve\n");
 	}
 	ft_free(mini->tab_tok);
 }
@@ -79,7 +101,48 @@ void	exit_exec(t_core *mini)
 	exit(0);
 }
 
-int	exec_builtins(t_core *mini)
+/**
+ * @brief Thebuiltins that are executed in the parent process are:
+ * cd, unset, exit & export.
+ * The builtins that are executed in a child process are: 
+ * env, echo, pwd & export (export a confirmer)
+ * The cd builtin and unset builtin builtin needs to be executed in the
+ * parent process because they need update the environment variables not
+ * only in the child process that carries a copy of it, but in the parent
+ * process as well. The exit builtin needs to be executed in the parent process
+ * because it needs to exit the shell as a whole.
+ *
+ * @param cmd The command to be executed.
+ */
+
+int	exec_builtins_parent(t_core *mini)
+{
+	if (ft_strcmp(mini->tab_tok[0], "cd") == 0)
+		return (exec_cd(mini));
+	else if (ft_strcmp(mini->tab_tok[0], "unset") == 0)
+		return (exec_unset(mini));	
+	else if (ft_strcmp(mini->tab_tok[0], "exit") == 0)
+		return (exec_exit(mini));
+	/*else if (ft_strcmp(mini->tab_tok[0], "export") == 0)
+		return(exec_export(mini));*/
+	return (1);
+}
+
+int	exec_builtins_child(t_core *mini)
+{
+	if (ft_strcmp(mini->tab_tok[0], "env") == 0)
+		return (exec_env(mini));
+	/*else if (ft_strcmp(mini->tab_tok[0], "echo") == 0)
+		return(exec_echo(mini));*/
+	else if (ft_strcmp(mini->tab_tok[0], "pwd") == 0)
+		return (exec_pwd(mini));
+	/*else if (ft_strcmp(mini->tab_tok[0], "export") == 0)
+		return(exec_export(mini));*/
+	return (1);
+}
+
+
+int	exec_builtins_all(t_core *mini)
 {
 	if (ft_strcmp(mini->tab_tok[0], "cd") == 0)
 		return (exec_cd(mini));
@@ -87,10 +150,10 @@ int	exec_builtins(t_core *mini)
 		return(exec_echo(mini));*/
 	else if (ft_strcmp(mini->tab_tok[0], "env") == 0)
 		return (exec_env(mini));
-	/*else if (ft_strcmp(mini->tab_tok[0], "exit") == 0)
-		return(exec_exit(mini));
-	else if (ft_strcmp(mini->tab_tok[0], "export") == 0)
-		return(exec_export(mini));*/
+	else if (ft_strcmp(mini->tab_tok[0], "exit") == 0)
+		return (exec_exit(mini));
+	/*else if (ft_strcmp(mini->tab_tok[0], "export") == 0)
+		return (exec_export(mini));*/
 	else if (ft_strcmp(mini->tab_tok[0], "pwd") == 0)
 		return (exec_pwd(mini));
 	else if (ft_strcmp(mini->tab_tok[0], "unset") == 0)
