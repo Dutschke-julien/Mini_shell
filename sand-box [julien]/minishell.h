@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/05 23:30:51 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:27:26 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int 	is_occurence(char c);
 char 	*cmd_with_space(char *str, int i, int j);
 char 	*update_input(char *str, int i, int j);
 int		cmpt_this(char *str, char c); //a utiliser pour les "  + ' 
+void    replace_symbol(char *str, char symbol);//replace les symboles a gauches des mots sans les espaces
+
 
 // pipex
 

@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/06 13:05:41 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:44:25 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,26 @@ int	pipe_calc(char **tab)
 
 void	input_split(t_core *mini)
 {
-	
-	printf("%s\n", update_input(mini->input, 0, 0));
+    char **hello;
+   int i = 0;
+   int j = 4;
+   char *str;
+
+	str = update_input(mini->input, 0, 0);
+    while (j--)
+    {
+        replace_symbol(str, '<');   
+        replace_symbol(str, '>');
+        
+    }
+    
+    hello = ft_split(str, ' ');
+   while (hello[i])
+    {
+        printf("hello[%d] = %s\n", i , hello[i]);
+        i++;
+    }
+    
 	//mini->cmd = ft_split(mini->input, '|');
 	//mini->nb_pipe = pipe_calc(mini->cmd);
 }
@@ -36,8 +54,6 @@ void	change_input_output(t_core *mini)
 void	last_input(t_core *mini);
 void	lst_output(t_core *mini);
 */
-
-
 
 
 
@@ -144,4 +160,23 @@ int cmpt_this(char *str, char c)
         i++;
     }
     return(cmpt);
+}
+
+//replace tout les symboles correctement ('<' '>' )
+void    replace_symbol(char *str, char symbol)
+{
+    int i = 0;
+    
+    while (str[i])
+    {
+        if (str[i] == symbol)
+            {
+                str[i] = ' ';
+                while (str[i] && str[i] == ' ')
+                    i++;
+                str[i - 1] = symbol;
+            }
+        else 
+            i++;
+    }
 }
