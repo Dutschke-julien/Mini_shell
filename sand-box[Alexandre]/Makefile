@@ -6,7 +6,7 @@
 #    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/10/06 14:02:53 by averon           ###   ########.fr        #
+#    Updated: 2022/10/10 10:10:58 by averon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = minishell
 SRCS = 	minishell.c	\
 		utils.c		\
 		var_env.c	\
+		exec_utils.c\
 		exec.c		\
 		free.c		\
 		init.c		\
@@ -25,10 +26,10 @@ SRCS = 	minishell.c	\
 		builtins/cd.c				\
 		builtins/env.c				\
 		builtins/exit.c				\
+		builtins/export.c			\
 		builtins/pwd.c				\
 		builtins/unset.c			\
-# Builtin restant à construire:
-# echo.c export.c
+# Builtin restant à construire: echo.c
 
 OBJS = $(SRCS:.c=.o)
 
