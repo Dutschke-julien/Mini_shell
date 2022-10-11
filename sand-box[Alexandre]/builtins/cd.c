@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:33:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/05 16:28:07 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/07 17:50:16 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	exec_cd(t_core *mini)
 	}
 	else if (ft_strcmp(mini->tab_tok[1], "..") == 0)
 	{
+		printf("*** control CD Tabtok 1 ***: %s\n", mini->tab_tok[1]);
 		get_upper_dir(mini->envp);
 		update_oldpwd(mini->envp, temp_pwd);
 		update_pwd(mini->envp);

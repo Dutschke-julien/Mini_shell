@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/06 15:19:54 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/10 18:16:22 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ static void	handler(int signal)
 int	main(int argc, char **argv, char **env)
 {	
 	t_core	*mini;
+	int		i;
 
+	i = 0;
 	(void)argc;
 	(void)argv;
 	init_struct_core(&mini);
@@ -42,8 +44,16 @@ int	main(int argc, char **argv, char **env)
 			//signal(SIGINT, sig_handler);
 			//signal(SIGQUIT, SIG_IGN);
 			input_split(mini);
+			//printf("ctrl nb pipe: %d\n", mini->nb_pipe);
 			if (mini->nb_pipe == 0)
-				exec_cmd_all(mini, 0);
+			{	
+				mini->tab_tok = ft_split(mini->cmd[i], ' ');
+				if (is_builtin(mini) == 1)
+					exec_builtins_all(mini);
+				if (is_builtin(mini) == 0)
+					execve_cmd_exec(mini);
+				ft_free(mini->tab_tok);
+			}
 			else
 				pipex(mini);
 		}

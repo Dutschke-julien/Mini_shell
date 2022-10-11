@@ -6,17 +6,16 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:16:37 by averon            #+#    #+#             */
-/*   Updated: 2022/10/06 14:03:41 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/11 10:26:31 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /**
- * @brief Checks if the command is a subject defined command (builtin).
- *
- * @param cmd The command to be checked.
- * @return int 1 if the command is a subject defined command, 0 otherwise.
+ * @brief verifie si la commande est un builtin.
+ * @param tab_tok[0]: La commande a verifier.
+ * @return int 1 si la commande est un builtin, 0 sinon.
  */
 int	is_builtin(t_core *mini)
 {
@@ -37,28 +36,19 @@ int	is_builtin(t_core *mini)
 	return (0);
 }
 
-/**
- * @brief Some builtins need a child process to run. This function checks if a
- * builtin needs a child process. If it does, it returns 1. Otherwise, it
- * returns 0. The builtins that need a child process are: cd, exit, unset.
- *
- * @param command The command to execute.
- * @return int 1 if the command needs a child process, 0 otherwise.
- */
+// VERIFIER UTILITE
 int	is_forked_command(t_core *mini)
 {
 	if (!ft_strncmp(mini->tab_tok[0], "cd\0", 3)
 		|| !ft_strncmp(mini->tab_tok[0], "unset\0", 6)
 		|| !ft_strncmp(mini->tab_tok[0], "exit\0", 5))
 	{
-		exec_builtins_parent(mini);
-		return (0);
+		return (1);
 	}
 	else if (!ft_strncmp(mini->tab_tok[0], "export\0", 7)
 		&& mini->tab_tok[1])
 	{
-		exec_builtins_parent(mini);
-		return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }

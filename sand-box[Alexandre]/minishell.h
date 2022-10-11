@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/06 15:19:22 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/11 10:16:28 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 # include <readline/history.h>
 # include "libft/libft.h"
 
-typedef struct s_global
+typedef struct s_process
 {
 	pid_t			pid;
 	int				exit_status;
-}t_global;
+}t_process;
 
-t_global			g_g;
+t_process			g_g;
 
 typedef struct s_core
 {
@@ -66,18 +66,22 @@ void		ft_parent_process(int *tube, int *fd);
 // var_env
 int			nbvar_env(char **env);
 char		**init_env(char **env);
-char		**realloc_envp(t_core *mini, size_t size);
 
-// exec
-void		exec_cmd_all(t_core *mini, int i);
-void		exec_cmd_child(t_core *mini, int i);
-void		exec_cmd_parents(t_core *mini, int i);
+
+// exec°utils
 char		*bin_dir_cat(t_core *mini);
 char		*get_path(t_core *mini);
+//void		forked_cmd_exec(t_core *mini);
 void		exit_exec(t_core *mini);
+
+// exec
+void		execve_cmd_exec(t_core *mini);
+void		exec_cmd_pipex(t_core *mini, int i);
+//void		exec_cmd_child(t_core *mini);
+//void		exec_cmd_parents(t_core *mini);
 int			exec_builtins_all(t_core *mini);
-int			exec_builtins_parent(t_core *mini);
-int			exec_builtins_child(t_core *mini);
+//int		exec_builtins_parent(t_core *mini);
+//int		exec_builtins_child(t_core *mini);
 
 // free
 void		free_minishell(void);
@@ -90,6 +94,7 @@ void		process(int sign_num);
 
 //BUILTINS
 // Builtin_utils
+int			is_builtin(t_core *mini);
 int			is_forked_command(t_core *mini);
 
 // cd
@@ -104,6 +109,7 @@ int			exec_echo(t_core *mini);
 
 // env
 int			exec_env(t_core *mini);
+char		**realloc_envp_unset(t_core *mini, size_t size);
 
 // exit
 int			exec_exit(t_core *mini);
@@ -112,6 +118,13 @@ int			numeric_arg_req(t_core *mini);
 
 // export
 int			exec_export(t_core *mini);
+int			export_check(char **str);
+void		export_print(char **envp);
+int			is_in_env(char **envp, char *str);
+void		env_sort(char **envp);
+char		**export_add_variable(t_core *mini, char *str);
+int			is_valid_var_name(char *str);
+char		**new_envp_export(t_core *mini, size_t size);
 
 // pwd
 int			exec_pwd(t_core *mini);
