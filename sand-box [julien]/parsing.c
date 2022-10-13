@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/10 17:44:25 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/11 23:02:11 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,69 @@ int	pipe_calc(char **tab)
 	return (i);
 }
 
-void	input_split(t_core *mini)
+void input_split(t_core *mini)  
 {
-    char **hello;
-   int i = 0;
-   int j = 4;
+   char **hello;
+  // int i = 0;
    char *str;
 
-	str = update_input(mini->input, 0, 0);
-    while (j--)
-    {
-        replace_symbol(str, '<');   
-        replace_symbol(str, '>');
-        
-    }
-    
+	str = update_input(mini->input, 0, 0);  
+    replace_all_symbol(str);
+    change_spc(str, '"', '"');
     hello = ft_split(str, ' ');
-   while (hello[i])
+    printf("%s\n", str);
+  /* while (hello[i])
     {
         printf("hello[%d] = %s\n", i , hello[i]);
         i++;
     }
-    
+*/
 	//mini->cmd = ft_split(mini->input, '|');
 	//mini->nb_pipe = pipe_calc(mini->cmd);
 }
 
-/*
-void	change_input_output(t_core *mini)
-void	last_input(t_core *mini);
-void	lst_output(t_core *mini);
-*/
+
+
+int replace_all_symbol(char *str)
+{
+    int i = 10;
+       while (i--)
+    {
+        replace_symbol(str, '<');   
+        replace_symbol(str, '>');
+    }
+    replace_symbol2(str, '"');
+    replace_symbol2(str, 47);
+    change_spc(str, '"', '"');
+    if (is_odd(str, '"'))
+        return(printf("erreur\n"));
+    
+    return (0);
+}
+
+
+void change_spc(char *str, char first, char second)
+{
+    unsigned int i;
+
+    i = 0;
+
+    while (str[i])
+    {
+        while(str[i] != first && str[i])
+            i++;
+        i++;
+        while(str[i] != second && str[i])
+        {
+            if (str[i] == ' ')
+                str[i] = 'w';
+            i++;
+        }
+    }
+}
+
+
+
 
 
 
@@ -179,4 +211,46 @@ void    replace_symbol(char *str, char symbol)
         else 
             i++;
     }
+}
+
+
+void    replace_symbol2(char *str, char c)
+{
+    unsigned int i;
+    unsigned int cmpt;
+
+    i = 0;
+    cmpt = 0;
+    while (str[i])
+    {
+        if (str[i] == c)
+        {
+            cmpt++;
+        if (cmpt % 2 == 0)
+        {
+            str[i - 1] = c;
+            str[i] = ' ';
+        }
+        }
+        i++;
+    }
+}
+
+
+int is_odd(char *str, char c)
+{
+    unsigned int i;
+    unsigned int cmpt;
+    
+    cmpt = 0;
+    i = 0;
+    while (str[i])
+    {
+        if (str[i] == c)
+            cmpt++;
+        i++;
+    }
+    if (cmpt % 2)
+        return (1);
+    return (0);
 }
