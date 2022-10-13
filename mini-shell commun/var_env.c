@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 12:52:36 by averon            #+#    #+#             */
-/*   Updated: 2022/10/03 11:50:54 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/12 17:50:56 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,21 @@ char	**init_env(char **env)
 	return (envp);
 }
 
-char	**realloc_envp(t_core *mini, size_t size)
+int	is_in_env(char **envp, char *str)
 {
-	char	**new;
-	size_t	i;
+	int		len;
+	int		i;
 
-	new = (char **)malloc(sizeof(char *) * (size + 1));
-	if (new == NULL)
-		return (NULL);
 	i = 0;
-	while (mini->envp[i] && i < size)
+	len = 0;
+	if (str)
+		while (str[len] != '=' && str[len] != 0)
+			len++;
+	while (envp[i])
 	{
-		new[i] = ft_strdup(mini->envp[i]);
+		if (!ft_strncmp(envp[i], str, len))
+			return (1);
 		i++;
 	}
-	new[size] = 0;
-	ft_free(mini->envp);
-	return (new);
+	return (0);
 }
