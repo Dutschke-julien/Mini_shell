@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:51:34 by averon            #+#    #+#             */
-/*   Updated: 2022/10/07 18:43:08 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/12 17:59:46 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ char	*get_path(t_core *mini)
 
 /*void	forked_cmd_exec(t_core *mini)
 {
-	g_g.pid = fork();
-	if (g_g.pid == 0)
+	mini->pid = fork();
+	if (mini->pid == 0)
 		exec_cmd_parents(mini);
 	else
 		wait(NULL);

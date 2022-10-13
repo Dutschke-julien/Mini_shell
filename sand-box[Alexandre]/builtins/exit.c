@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:12:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/06 17:36:38 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/12 18:07:47 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ int	exec_exit(t_core *mini)
 		return (0);
 	}
 	else if (mini->tab_tok[1] && ft_isnumber(mini->tab_tok[1]))
-		g_g.exit_status = ft_atoi(mini->tab_tok[1]);
+		g_exit_status = ft_atoi(mini->tab_tok[1]);
 	else if (mini->tab_tok[1] && !ft_isnumber(mini->tab_tok[1]))
 	{
 		numeric_arg_req(mini);
 		return (0);
 	}
-	g_g.exit_status = ft_atoi(mini->tab_tok[1]);
+	//g_exit_status = ft_atoi(mini->tab_tok[1]);
 	ft_putstr_fd("exit\n", 2);
-	free_minishell();
-	exit(g_g.exit_status);
+	//free_minishell() *** a completer ***
+	exit(g_exit_status);
 	return (0);
 }
 
@@ -55,7 +55,7 @@ int	exec_exit(t_core *mini)
 int	too_many_args(void)
 {
 	ft_putendl_fd("Minishell: exit: too many arguments", 2);
-	g_g.exit_status = 1;
+	g_exit_status = 1;
 	return (0);
 }
 
@@ -66,11 +66,11 @@ int	too_many_args(void)
  * @return int 1 car cette fonction sort du shell.
  */
 
-int	numeric_arg_req(t_core *mini)
+void	numeric_arg_req(t_core *mini)
 {
 	ft_putstr_fd("Minishell: exit: ", 2);
 	ft_putstr_fd(mini->tab_tok[1], 2);
 	ft_putendl_fd(": numeric argument required", 2);
 	exit(2);
-	return (1);
+	//return (1);
 }

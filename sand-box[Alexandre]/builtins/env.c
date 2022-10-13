@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 17:16:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/10 18:16:23 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/12 17:54:48 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,3 @@ char	**realloc_envp_unset(t_core *mini, size_t size)
 	ft_free(mini->envp);
 	return (new);
 }
-
-

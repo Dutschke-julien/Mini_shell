@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/11 10:16:28 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/12 18:12:39 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,19 @@
 # include <readline/history.h>
 # include "libft/libft.h"
 
-typedef struct s_process
-{
-	pid_t			pid;
-	int				exit_status;
-}t_process;
-
-t_process			g_g;
+int				g_exit_status;
 
 typedef struct s_core
 {
-	char			**envp;
-	char			*input;
-	char			**cmd;
-	char			**tab_tok;
-	int				tube[2];
-	int				nb_pipe;
-	char			*bin_dir;
-	char			**path_tab;			
+	pid_t		pid;
+	char		**envp;
+	char		*input;
+	char		**cmd;
+	char		**tab_tok;
+	int			tube[2];
+	int			nb_pipe;
+	char		*bin_dir;
+	char		**path_tab;			
 }t_core;
 
 // utils
@@ -58,6 +53,10 @@ void		init_struct_var(t_core *mini, char **env);
 void		input_split(t_core *mini);
 int			pipe_calc(char **tab);
 
+//	expanse_dollar
+int			expanse_dollar(char **envp, char *str);
+char		*dollar_is_in_env(char **envp, char *str);
+
 // pipex
 void		pipex(t_core *mini);
 void		ft_child_process(t_core *mini, int i);
@@ -66,9 +65,10 @@ void		ft_parent_process(int *tube, int *fd);
 // var_env
 int			nbvar_env(char **env);
 char		**init_env(char **env);
+int			is_in_env(char **envp, char *str);
+void		print_env(char **envp, char *envp_name);
 
-
-// exec°utils
+// exec_utils
 char		*bin_dir_cat(t_core *mini);
 char		*get_path(t_core *mini);
 //void		forked_cmd_exec(t_core *mini);
@@ -87,10 +87,7 @@ int			exec_builtins_all(t_core *mini);
 void		free_minishell(void);
 
 // signal
-//static void	process(int sign_num);
-void		sig_handler(int sig_num);
-void		sig_handler_redisp(int sig_num);
-void		process(int sign_num);
+void		handler(int signal);
 
 //BUILTINS
 // Builtin_utils
@@ -106,6 +103,8 @@ void		update_oldpwd(char **envp, char *temp_pwd);
 
 // echo
 int			exec_echo(t_core *mini);
+int			is_n_option(char *str);
+void		echo_print_option(t_core *mini, int j);
 
 // env
 int			exec_env(t_core *mini);
@@ -114,21 +113,23 @@ char		**realloc_envp_unset(t_core *mini, size_t size);
 // exit
 int			exec_exit(t_core *mini);
 int			too_many_args(void);
-int			numeric_arg_req(t_core *mini);
+void		numeric_arg_req(t_core *mini);
 
 // export
 int			exec_export(t_core *mini);
-int			export_check(char **str);
 void		export_print(char **envp);
-int			is_in_env(char **envp, char *str);
-void		env_sort(char **envp);
 char		**export_add_variable(t_core *mini, char *str);
-int			is_valid_var_name(char *str);
+void		export_change_value(char **envp, char *str);
 char		**new_envp_export(t_core *mini, size_t size);
+
+// export2
+int			is_valid_var_name(char *str);
+void		export_error(char *str);
+void		env_sort(char **envp);
 
 // pwd
 int			exec_pwd(t_core *mini);
-void		read_pwd(char **envp);
+void		print_pwd(void);
 void		update_pwd(char **envp);
 
 // unset
