@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:30:25 by averon            #+#    #+#             */
-/*   Updated: 2022/10/03 13:06:32 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/11 17:15:25 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char	**new_envp_unset(t_core *mini, int index)
 		mini->envp[j] = temp;
 		j++;
 	}
-	mini->envp = realloc_envp(mini, n - 1);
+	mini->envp = realloc_envp_unset(mini, n - 1);
 	return (mini->envp);
 }
+

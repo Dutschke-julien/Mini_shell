@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 17:32:26 by averon            #+#    #+#             */
-/*   Updated: 2022/10/03 16:17:55 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/12 16:32:50 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,20 @@
 int	exec_pwd(t_core *mini)
 {
 	update_pwd(mini->envp); //a ressortir de la fonction
-	read_pwd(mini->envp);
+	print_pwd();
 	return (0);
 }
 
-void	read_pwd(char **envp)
+void	print_pwd(void)
 {
-	int	i;
+	char	*wd;
+	int		i;
 
 	i = 0;
-	while (envp[i] && ft_strncmp(envp[i], "PWD=", 4) != 0)
-		i++;
-	if (envp[i])
-		printf("%s\n", &envp[i][4]);
-	else
-		printf("no working directory !?\n");
+	wd = malloc(1024);
+	getcwd(wd, 1024);
+	printf("%s\n", wd);	
+	free(wd);
 }
 
 void	update_pwd(char **envp)
@@ -49,4 +48,3 @@ void	update_pwd(char **envp)
 	}
 	free(wd);
 }
-

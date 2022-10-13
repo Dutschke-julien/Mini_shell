@@ -6,30 +6,32 @@
 #    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/10/10 10:10:58 by averon           ###   ########.fr        #
+#    Updated: 2022/10/12 13:34:47 by averon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-SRCS = 	minishell.c	\
-		utils.c		\
-		var_env.c	\
-		exec_utils.c\
-		exec.c		\
-		free.c		\
-		init.c		\
-		parsing.c	\
-		pipex.c		\
-		signal.c	\
+SRCS = 	minishell.c					\
+		utils.c						\
+		var_env.c					\
+		exec_utils.c				\
+		exec.c						\
+		expanse_dollar.c			\
+		free.c						\
+		init.c						\
+		parsing.c					\
+		pipex.c						\
+		signal.c					\
 		builtins/builtins_utils.c	\
 		builtins/cd.c				\
+		builtins/echo.c				\
 		builtins/env.c				\
 		builtins/exit.c				\
 		builtins/export.c			\
+		builtins/export2.c			\
 		builtins/pwd.c				\
 		builtins/unset.c			\
-# Builtin restant à construire: echo.c
 
 OBJS = $(SRCS:.c=.o)
 
