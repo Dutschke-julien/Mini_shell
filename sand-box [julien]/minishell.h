@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/11 22:38:49 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:38:26 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <errno.h>
-# include <string.h> // mettre strcat dans libft;
+# include <string.h>
 # include <unistd.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft/libft.h"
-
 
 /*
 token 0 = chaine simple
@@ -50,9 +49,7 @@ typedef struct s_core
 	int				fd_output;
 	char			*file_input;
 	char			**files_output;			
-	//char			**exec_params;
 }t_core;
-
 
 // utils
 
@@ -69,16 +66,16 @@ void	init_struct_var(t_core *mini, char **env);
 
 void	input_split(t_core *mini);
 int		pipe_calc(char **tab);
-int	    get_tokens(char *str);
-int 	is_occurence(char c);
-char 	*cmd_with_space(char *str, int i, int j);
-char 	*update_input(char *str, int i, int j);
-int		cmpt_this(char *str, char c); //a utiliser pour les "  + ' 
-int 	replace_all_symbol(char *str);
-void    replace_symbol(char *str, char symbol);//replace les symboles a gauches des mots sans les espaces
-void    replace_symbol2(char *str, char c);
-int 	is_odd(char *str, char c);
-void 	change_spc(char *str, char first, char second);
+int		get_tokens(char *str);
+int		is_occurence(char c);
+char	*cmd_with_space(char *str, int i, int j);
+char	*update_input(char *str, int i, int j);
+int		cmpt_this(char *str, char c); 
+int		replace_all_symbol(char *str);
+void	replace_symbol(char *str, char symbol);
+void	replace_symbol2(char *str, char c);
+int		is_odd(char *str, char c);
+void	change_spc(char *str, char first, char second);
 
 // pipex
 

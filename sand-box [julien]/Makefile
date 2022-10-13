@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
+#    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/09/08 16:39:24 by averon           ###   ########.fr        #
+#    Updated: 2022/10/13 20:22:04 by jdutschk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ SRCS = 	minishell.c	\
 		exec.c		\
 		init.c		\
 		parsing.c	\
+		parsing2.c	\
+		parsing3.c	\
 		pipex.c
 
 OBJS = $(SRCS:.c=.o)
