@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:37:54 by averon            #+#    #+#             */
-/*   Updated: 2022/09/09 16:45:06 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/17 01:16:45 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,16 @@ void	check_tab_char(char **tab)
 
 }
 
+char *ft_strcpy(char *dest, char *src)
+{
+	int i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}

@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/13 20:38:26 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/17 18:59:38 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,20 @@ int		get_tokens(char *str);
 int		is_occurence(char c);
 char	*cmd_with_space(char *str, int i, int j);
 char	*update_input(char *str, int i, int j);
-int		cmpt_this(char *str, char c); 
+int		cmpt_this(char *str, char c);
 int		replace_all_symbol(char *str);
 void	replace_symbol(char *str, char symbol);
 void	replace_symbol2(char *str, char c);
 int		is_odd(char *str, char c);
 void	change_spc(char *str, char first, char second);
-
+void	replace_str_space_tab(char **tab);
+void	define_tab_tokens(char **tab);
+void	replace_str_space(char *str);
+char	*define_str_token(char *str);
+char	*define_str_token2(char *str);
+char	*define_str_token3(char *str);
+char	*define_str_token4(char *str);
+char	*ft_strcpy(char *dest, char *src);
 // pipex
 
 void	pipex(t_core *mini);

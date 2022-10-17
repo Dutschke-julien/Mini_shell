@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:21:04 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/13 20:46:09 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:02:09 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,21 @@ void	replace_symbol2(char *str, char c)
 		if (str[i] == c)
 		{
 			cmpt++;
-		if (cmpt % 2 == 0)
-		{
+			if (cmpt % 2 == 0)
+			{
 			str[i - 1] = c;
-			str[i] = ' ';
-		}
+				str[i] = ' ';
+			}
 		}
 		i++;
 	}
 }
 
-
-int is_odd(char *str, char c)
+int	is_odd(char *str, char c)
 {
-	unsigned int i;
-	unsigned int cmpt;
-	
+	unsigned int	i;
+	unsigned int	cmpt;
+
 	cmpt = 0;
 	i = 0;
 	while (str[i])

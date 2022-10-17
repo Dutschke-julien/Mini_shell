@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 13:44:04 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/11 13:53:49 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:16:41 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int	main(int argc, char **argv, char **env)
 	}
 	return (0);
 }
-
-
 
 // Récupérer en boucle l’entrée de l’utilisateur[ok]
 // argv: parametres de la foncion que l'on veut executer[ok]

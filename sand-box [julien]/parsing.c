@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/13 20:42:14 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/17 19:23:13 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,17 @@ void	input_split(t_core *mini)
    int i = 0;
    char *str;
 
+	i = 0;
 	str = update_input(mini->input, 0, 0);
 	replace_all_symbol(str);
 	change_spc(str, '"', '"');
+	change_spc(str, 39, 39);
 	hello = ft_split(str, ' ');
-	printf("%s\n", str);
-  while (hello[i])
+	replace_str_space_tab(hello);
+	define_tab_tokens(hello);
+	while (hello[i])
 	{
-		printf("hello[%d] = %s\n", i , hello[i]);
+		printf("hello[%d] = %s\n", i, hello[i]);
 		i++;
 	}
 	//mini->cmd = ft_split(mini->input, '|');
@@ -54,9 +57,10 @@ int	replace_all_symbol(char *str)
 		replace_symbol(str, '>');
 	}
 	replace_symbol2(str, '"');
-	replace_symbol2(str, 47);
-	change_spc(str, '"', '"');
+	replace_symbol2(str, 39);
 	if (is_odd(str, '"'))
+		return (printf("erreur\n"));
+	if (is_odd(str, 39))
 		return (printf("erreur\n"));
 	return (0);
 }
@@ -74,7 +78,7 @@ void	change_spc(char *str, char first, char second)
 		while (str[i] != second && str[i])
 		{
 			if (str[i] == ' ')
-				str[i] = 'w';
+				str[i] = 4;
 			i++;
 		}
 		i++;
