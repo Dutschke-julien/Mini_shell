@@ -6,7 +6,7 @@
 #    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/10/12 13:34:47 by averon           ###   ########.fr        #
+#    Updated: 2022/10/17 11:31:31 by averon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS = 	minishell.c					\
 		exec.c						\
 		expanse_dollar.c			\
 		free.c						\
+		heredoc.c					\
 		init.c						\
 		parsing.c					\
 		pipex.c						\

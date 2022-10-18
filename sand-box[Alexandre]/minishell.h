@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/12 18:12:39 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/17 17:22:42 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ int			pipe_calc(char **tab);
 int			expanse_dollar(char **envp, char *str);
 char		*dollar_is_in_env(char **envp, char *str);
 
+// heredoc
+
+int			heredoc(char *name);
+void		heredoc_loop(char *limiter, int *file_descriptor);
+int			heredoc_error(int *fd);
+
 // pipex
 void		pipex(t_core *mini);
 void		ft_child_process(t_core *mini, int i);
@@ -87,7 +93,10 @@ int			exec_builtins_all(t_core *mini);
 void		free_minishell(void);
 
 // signal
-void		handler(int signal);
+void		signals(void);
+void		sig_handler(int signal);
+void		signal_hd_loop(void);
+void		sig_hd_handler(int signal);
 
 //BUILTINS
 // Builtin_utils
