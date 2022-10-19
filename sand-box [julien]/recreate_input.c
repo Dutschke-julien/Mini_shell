@@ -1,48 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Change_output_fd.c                                 :+:      :+:    :+:   */
+/*   recreate_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 15:13:16 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/19 17:48:06 by jdutschk         ###   ########.fr       */
+/*   Created: 2022/10/19 17:58:06 by jdutschk          #+#    #+#             */
+/*   Updated: 2022/10/19 18:05:43 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	change_output_fd(char **tab)
+int	all_strlen(char **tab)
 {
 	int	i;
-	int	fd;
+	int	longueur;
 
 	i = 0;
-	fd = 0;
+	longueur = 0;
 	while (tab[i])
 	{
-		if (is_exit(tab[i]))
-		{
-			fd = open(&tab[i][1], O_RDWR | O_CREAT | O_TRUNC, 0777);
-			printf("voice la chaine %s pour open\n", &tab[i][1]);
-			delete_case(tab, i);
-		}
-		else
-			i++;
+		longueur = longueur + ft_strlen(tab[i]);
+		i++;
 	}
-	return (fd);
+	return (longueur);
 }
 
-int	is_exit(char *str)
+char	*recreate_input(char **tab)
 {
-	int	i;
+	char	*str;
+	int		i;
 
-	i = ft_strlen(str) - 1;
-	if (str[i] == '2')
+	i = 0;
+	while (tab[i])
 	{
-		str[i] = '\0';
-		return (1);
+		str = ft_strjoin(str, tab[i]);
+		str = ft_strjoin(str, " ");
+		i++;
 	}
-	else
-		return (0);
+	return (str);
 }

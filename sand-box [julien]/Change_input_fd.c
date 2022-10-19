@@ -6,18 +6,19 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:36:43 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/19 15:12:54 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/19 17:48:18 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	change_input_fd(char **tab)
+int	change_input_fd(char **tab)
 {
 	int	i;
 	int	fd;
 
 	i = 0;
+	fd = 0;
 	while (tab[i])
 	{
 		if (is_enter(tab[i]))
@@ -31,7 +32,7 @@ void	change_input_fd(char **tab)
 		else
 			i++;
 	}
-	printf("valeur de open = %d\n", fd);
+	return (fd);
 }
 
 void	delete_case(char **tab, int local_case)

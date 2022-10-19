@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/19 15:17:13 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/19 18:00:50 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,13 @@ char	*define_str_token3(char *str);
 char	*define_str_token4(char *str);
 char	*ft_strcpy(char *dest, char *src);
 void	change_pipe_in_str(char *str);
-void	change_input_fd(char **tab);
-void	change_output_fd(char **tab);
+int		change_input_fd(char **tab);
+int		change_output_fd(char **tab);
 void	delete_case(char **tab, int local_case);
 int		is_enter(char *str);
 int		is_exit(char *str);
+int	all_strlen(char **tab);
+char	*recreate_input(char **tab);
 // pipex
 
 void	pipex(t_core *mini);

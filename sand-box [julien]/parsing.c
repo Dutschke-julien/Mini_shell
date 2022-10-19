@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/19 14:37:13 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/19 18:03:59 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	pipe_calc(char **tab)
 void	input_split(t_core *mini)
 {
    char **hello;
-   int i = 0;
+   int i = 0; 
    char *str;
 
 	i = 0;
@@ -38,11 +38,14 @@ void	input_split(t_core *mini)
 	replace_str_space_tab(hello);
 	define_tab_tokens(hello);
 	change_input_fd(hello);
+	change_output_fd(hello);
 	while (hello[i])
 	{
 		printf("hello[%d] = %s\n", i, hello[i]);
 		i++;
 	}
+	str = recreate_input(hello);
+	printf("voici l'input reformer   %s\n", str);
 	//mini->cmd = ft_split(mini->input, '|');
 	//mini->nb_pipe = pipe_calc(mini->cmd);
 }
