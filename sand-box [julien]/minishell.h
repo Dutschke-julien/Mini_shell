@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/17 18:59:38 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/19 15:17:13 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft/libft.h"
-
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 /*
 token 0 = chaine simple
 token 1 = <
@@ -46,9 +48,7 @@ typedef struct s_core
 	char			*bin_dir;
 	char			**path_tab;
 	int				fd_input;
-	int				fd_output;
-	char			*file_input;
-	char			**files_output;			
+	int				fd_output;			
 }t_core;
 
 // utils
@@ -84,6 +84,12 @@ char	*define_str_token2(char *str);
 char	*define_str_token3(char *str);
 char	*define_str_token4(char *str);
 char	*ft_strcpy(char *dest, char *src);
+void	change_pipe_in_str(char *str);
+void	change_input_fd(char **tab);
+void	change_output_fd(char **tab);
+void	delete_case(char **tab, int local_case);
+int		is_enter(char *str);
+int		is_exit(char *str);
 // pipex
 
 void	pipex(t_core *mini);

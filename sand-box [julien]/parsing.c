@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/17 19:23:13 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/19 14:37:13 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	input_split(t_core *mini)
 	hello = ft_split(str, ' ');
 	replace_str_space_tab(hello);
 	define_tab_tokens(hello);
+	change_input_fd(hello);
 	while (hello[i])
 	{
 		printf("hello[%d] = %s\n", i, hello[i]);

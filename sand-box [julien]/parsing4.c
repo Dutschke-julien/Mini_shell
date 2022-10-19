@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:16:51 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/17 19:02:24 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:01:52 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	define_tab_tokens(char **tab)
 		tab[i] = define_str_token2(tab[i]);
 		tab[i] = define_str_token3(tab[i]);
 		tab[i] = define_str_token4(tab[i]);
+		if (tab[i][ft_strlen(tab[i]) - 1] == '6')
+			change_pipe_in_str(tab[i]);
 		i++;
 	}
 }

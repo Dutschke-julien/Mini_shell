@@ -6,7 +6,7 @@
 #    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/10/17 17:30:02 by jdutschk         ###   ########.fr        #
+#    Updated: 2022/10/19 14:58:25 by jdutschk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = 	minishell.c	\
 		parsing3.c	\
 		parsing4.c	\
 		parsing5.c	\
+		Change_input_fd.c\
 		pipex.c
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 00:59:05 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/17 18:05:14 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:02:00 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,17 @@ char	*define_str_token4(char *str)
 	}
 	free(str);
 	return (s1);
+}
+
+void	change_pipe_in_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '|')
+			str[i] = 4;
+		i++;
+	}
 }
