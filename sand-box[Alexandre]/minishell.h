@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/20 13:41:57 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/20 14:44:25 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft/libft.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 int				g_exit_status;
 
@@ -81,14 +81,11 @@ void		print_env(char **envp, char *envp_name);
 // exec_utils
 char		*bin_dir_cat(t_core *mini);
 char		*get_path(t_core *mini);
-//void		forked_cmd_exec(t_core *mini);
 void		exit_exec(t_core *mini);
 
 // exec
 void		execve_cmd_exec(t_core *mini);
 void		exec_cmd_pipex(t_core *mini, int i);
-//void		exec_cmd_child(t_core *mini);
-//void		exec_cmd_parents(t_core *mini);
 int			exec_builtins_all(t_core *mini);
 //int		exec_builtins_parent(t_core *mini);
 //int		exec_builtins_child(t_core *mini);

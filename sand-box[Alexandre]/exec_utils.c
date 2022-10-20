@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:51:34 by averon            #+#    #+#             */
-/*   Updated: 2022/10/12 17:59:46 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/20 14:40:34 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char	*bin_dir_cat(t_core *mini)
 		strcat(mini->bin_dir, mini->path_tab[i]);
 		strcat(mini->bin_dir, "/");
 		strcat(mini->bin_dir, mini->tab_tok[0]);
-		//ft_printf("access %d. " ,temp = access(bin_dir, F_OK));
 		i++;
 	}
 	return (mini->bin_dir);
@@ -36,7 +35,7 @@ char	*bin_dir_cat(t_core *mini)
 char	*get_path(t_core *mini)
 {
 	int		j;
-	char	*path; 
+	char	*path;
 
 	j = 0;
 	path = ft_strdup(getenv("PATH"));
@@ -57,15 +56,6 @@ char	*get_path(t_core *mini)
 		free(path);
 	return (mini->tab_tok[0]);
 }
-
-/*void	forked_cmd_exec(t_core *mini)
-{
-	mini->pid = fork();
-	if (mini->pid == 0)
-		exec_cmd_parents(mini);
-	else
-		wait(NULL);
-}*/
 
 void	exit_exec(t_core *mini)
 {

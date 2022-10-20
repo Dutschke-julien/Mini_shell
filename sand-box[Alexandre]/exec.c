@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/10/17 11:27:34 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/20 14:43:52 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,6 @@ void	exec_cmd_pipex(t_core *mini, int i)
 	exit(0);
 }
 
-/*void	exec_cmd_child(t_core *mini)
-{
-	{
-		//mini->tab_tok = ft_split(mini->cmd[i], ' ');
-		if (exec_builtins_child(mini) == 1)
-		{
-			get_path(mini);
-			if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
-				perror("pb with execve\n");
-		}
-		//ft_free(mini->tab_tok);
-	}
-}*/
-
-/*void	exec_cmd_parents(t_core *mini)
-{
-	//mini->tab_tok = ft_split(mini->cmd[i], ' ');
-	if (exec_builtins_parent(mini) == 1)
-	{
-		printf("*** ERREUR BUILTIN CD !! ***\n");
-		get_path(mini);
-		if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
-			perror("pb with execve\n");
-	}
-	//ft_free(mini->tab_tok);
-}*/
 
 int	exec_builtins_all(t_core *mini)
 {
@@ -86,7 +60,7 @@ int	exec_builtins_all(t_core *mini)
 
 // VOIR SI UTILE POUR LA SUITE
 
-int	exec_builtins_parent(t_core *mini)
+/*int	exec_builtins_parent(t_core *mini)
 {
 	if (ft_strcmp(mini->tab_tok[0], "cd") == 0)
 		return (exec_cd(mini));
@@ -95,7 +69,7 @@ int	exec_builtins_parent(t_core *mini)
 	else if (ft_strcmp(mini->tab_tok[0], "exit") == 0)
 		return (exec_exit(mini));
 	else if (ft_strcmp(mini->tab_tok[0], "export") == 0)
-		return (exec_export(mini)); /*EXPORT AVEC ARGUMENT*/
+		return (exec_export(mini)); //EXPORT AVEC ARGUMENT
 	return (1);
 }
 
@@ -108,8 +82,8 @@ int	exec_builtins_child(t_core *mini)
 	else if (ft_strcmp(mini->tab_tok[0], "pwd") == 0)
 		return (exec_pwd(mini));
 	else if (ft_strcmp(mini->tab_tok[0], "export") == 0)
-		return (exec_export(mini)); /*EXPORT SANS ARGUMENTS*/
+		return (exec_export(mini)); //EXPORT SANS ARGUMENTS
 	return (1);
-}
+}*/
 
 
