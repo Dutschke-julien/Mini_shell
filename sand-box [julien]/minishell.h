@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/19 18:00:50 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/20 12:44:20 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,9 @@ int		change_output_fd(char **tab);
 void	delete_case(char **tab, int local_case);
 int		is_enter(char *str);
 int		is_exit(char *str);
-int	all_strlen(char **tab);
+int		all_strlen(char **tab);
+void	check_str_token(char **tab);
+void	change_dollar_in_str(char *str);
 char	*recreate_input(char **tab);
 // pipex
 
