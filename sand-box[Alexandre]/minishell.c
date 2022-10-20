@@ -6,24 +6,11 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/19 12:23:39 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/20 13:41:03 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-
-// for ctrl-C 
-
-/*static void	handler(int signal)
-{
-	(void)signal;
-	printf("\n");
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
-	g_exit_status = 130;
-}*/
 
 int	main(int argc, char **argv, char **env)
 {	
@@ -63,46 +50,3 @@ int	main(int argc, char **argv, char **env)
 	}
 	return (0);
 }
-
-
-
-
-/*int	heredoc(char *name)
-{
-	int		fd;
-	
-	fd = open("test.txt", O_CREAT | O_TRUNC | O_WRONLY);	
-	heredoc_loop(ft_strdup(name), fd);
-	
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, SIG_IGN);
-	close(fd[1]);
-
-	return (fd);
-}
-
-void	heredoc_loop(char *limiter, int fd)
-{
-	char	*line;
-	int		size;
-
-	signal_hd_loop();
-	
-	size = ft_strlen(limiter);
-
-	while (1)
-	{
-		line = readline("> ");
-		if (!line || (!ft_strncmp(limiter, line, size) && !line[size]))
-		{	
-			free(line);
-			break ;
-		}
-		ft_putendl_fd(line, fd);
-		free(line);
-	}
-	free(line);
-	close(fd);
-	free(limiter);
-	exit(0);
-}*/

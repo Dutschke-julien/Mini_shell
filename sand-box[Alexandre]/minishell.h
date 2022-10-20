@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/19 18:10:12 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/20 13:41:57 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_core
 	int			nb_pipe;
 	char		*bin_dir;
 	char		**path_tab;
-	//char		*file_name;		
 }t_core;
 
 // utils
