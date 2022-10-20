@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:13:16 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/19 17:48:06 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/20 14:10:27 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	change_output_fd(char **tab)
 	int	fd;
 
 	i = 0;
-	fd = 0;
+	fd = 1;
 	while (tab[i])
 	{
 		if (is_exit(tab[i]))

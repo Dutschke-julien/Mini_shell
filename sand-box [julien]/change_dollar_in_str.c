@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/20 13:32:21 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/20 13:37:31 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ void	check_str_token(char **tab)
 
 void	change_dollar_in_str(char *str)
 {
-	int i;
+	int	i;
+	
+	i = 0;
+	(void)str;
 }

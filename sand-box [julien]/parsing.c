@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/20 12:44:49 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/20 14:17:30 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ int	pipe_calc(char **tab)
 
 void	input_split(t_core *mini)
 {
-   char **hello;
-   int i = 0; 
-   char *str;
+	char	**hello;
+	char	*str;
 
-	i = 0;
 	str = update_input(mini->input, 0, 0);
 	replace_all_symbol(str);
 	change_spc(str, '"', '"');
@@ -37,18 +35,13 @@ void	input_split(t_core *mini)
 	hello = ft_split(str, ' ');
 	replace_str_space_tab(hello);
 	define_tab_tokens(hello);
-	change_input_fd(hello);
-	change_output_fd(hello);
+	mini->fd_input = change_input_fd(hello);
+	mini->fd_output = change_output_fd(hello);
 	check_str_token(hello);
-	while (hello[i])
-	{
-		printf("hello[%d] = %s\n", i, hello[i]);
-		i++;
-	}
-	str = recreate_input(hello);
-	printf("voici l'input reformer   %s\n", str);
-	//mini->cmd = ft_split(mini->input, '|');
-	//mini->nb_pipe = pipe_calc(mini->cmd);
+	reset_token(hello);
+	mini->input = recreate_input(hello);
+	mini->cmd = ft_split(mini->input, '|');
+	mini->nb_pipe = pipe_calc(mini->cmd);
 }
 
 int	replace_all_symbol(char *str)
@@ -86,6 +79,18 @@ void	change_spc(char *str, char first, char second)
 				str[i] = 4;
 			i++;
 		}
+		i++;
+	}
+}
+
+void	reset_token(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		tab[i][ft_strlen(tab[i]) - 1] = '\0';
 		i++;
 	}
 }

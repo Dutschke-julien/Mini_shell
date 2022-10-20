@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:58:06 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/19 18:05:43 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/20 13:58:20 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	*recreate_input(char **tab)
 	char	*str;
 	int		i;
 
+	str = ft_calloc(1, 1);
 	i = 0;
 	while (tab[i])
 	{

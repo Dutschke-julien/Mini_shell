@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 13:44:04 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/19 14:31:54 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/20 14:06:30 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	main(int argc, char **argv, char **env)
 		mini->input = readline("minishell>");
 		add_history(mini->input);
 		input_split(mini);
-		//pipex(mini);
+		printf("%s\n", mini->input);
+		pipex(mini);
+		mini->fd_input = 0;
+		mini->fd_output = 1;
 		free(mini->input);
 	}
 	return (0);
