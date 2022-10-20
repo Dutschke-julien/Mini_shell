@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 17:32:26 by averon            #+#    #+#             */
-/*   Updated: 2022/10/17 10:28:32 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/19 17:59:55 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	exec_pwd(t_core *mini)
 void	print_pwd(void)
 {
 	char	*wd;
-	
+
 	wd = malloc(1024);
 	getcwd(wd, 1024);
 	printf("%s\n", wd);	

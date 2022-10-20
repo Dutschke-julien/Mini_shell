@@ -6,7 +6,7 @@
 #    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/10/17 11:31:31 by averon           ###   ########.fr        #
+#    Updated: 2022/10/19 18:13:56 by averon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS = 	minishell.c					\
 		signal.c					\
 		builtins/builtins_utils.c	\
 		builtins/cd.c				\
+		builtins/cd2.c				\
 		builtins/echo.c				\
 		builtins/env.c				\
 		builtins/exit.c				\
