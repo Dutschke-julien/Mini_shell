@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/17 12:10:02 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/19 12:23:39 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv, char **env)
 			{	
 				mini->tab_tok = ft_split(mini->cmd[i], ' ');
 				if (ft_strncmp(mini->tab_tok[0], "<<", 2) == 0)
-					heredoc(&mini->tab_tok[0][2]);
+					heredoc(&mini->tab_tok[0][2], mini);
 				else if (is_builtin(mini) == 1)
 					exec_builtins_all(mini);
 				else if (is_builtin(mini) == 0)
@@ -65,3 +65,44 @@ int	main(int argc, char **argv, char **env)
 }
 
 
+
+
+/*int	heredoc(char *name)
+{
+	int		fd;
+	
+	fd = open("test.txt", O_CREAT | O_TRUNC | O_WRONLY);	
+	heredoc_loop(ft_strdup(name), fd);
+	
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, SIG_IGN);
+	close(fd[1]);
+
+	return (fd);
+}
+
+void	heredoc_loop(char *limiter, int fd)
+{
+	char	*line;
+	int		size;
+
+	signal_hd_loop();
+	
+	size = ft_strlen(limiter);
+
+	while (1)
+	{
+		line = readline("> ");
+		if (!line || (!ft_strncmp(limiter, line, size) && !line[size]))
+		{	
+			free(line);
+			break ;
+		}
+		ft_putendl_fd(line, fd);
+		free(line);
+	}
+	free(line);
+	close(fd);
+	free(limiter);
+	exit(0);
+}*/

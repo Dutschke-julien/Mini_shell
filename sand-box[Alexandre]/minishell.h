@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/17 17:22:42 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/19 18:10:12 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft/libft.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 int				g_exit_status;
 
@@ -35,7 +38,8 @@ typedef struct s_core
 	int			tube[2];
 	int			nb_pipe;
 	char		*bin_dir;
-	char		**path_tab;			
+	char		**path_tab;
+	//char		*file_name;		
 }t_core;
 
 // utils
@@ -59,9 +63,10 @@ char		*dollar_is_in_env(char **envp, char *str);
 
 // heredoc
 
-int			heredoc(char *name);
-void		heredoc_loop(char *limiter, int *file_descriptor);
+void		heredoc(char *name, t_core *mini);
+void		heredoc_loop(char *limiter, int fd, t_core *mini);
 int			heredoc_error(int *fd);
+void		heredoc_cat(char *limiter);
 
 // pipex
 void		pipex(t_core *mini);
@@ -103,9 +108,12 @@ void		sig_hd_handler(int signal);
 int			is_builtin(t_core *mini);
 int			is_forked_command(t_core *mini);
 
-// cd
+// cd1
 int			exec_cd(t_core *mini);
+int			exec_cd2(t_core *mini, char *temp_pwd);
 void		get_home(char **envp);
+
+// cd2
 char		*save_pwd(char **envp);
 void		get_upper_dir(char **envp);
 void		update_oldpwd(char **envp, char *temp_pwd);
