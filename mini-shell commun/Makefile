@@ -6,7 +6,7 @@
 #    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/10/24 18:50:30 by jdutschk         ###   ########.fr        #
+#    Updated: 2022/10/24 19:07:37 by jdutschk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,14 @@ SRCS = 	minishell.c					\
 		exec.c						\
 		expanse_dollar.c			\
 		free.c						\
+		heredoc.c					\
 		init.c						\
 		parsing.c					\
 		pipex.c						\
 		signal.c					\
 		builtins/builtins_utils.c	\
 		builtins/cd.c				\
+		builtins/cd2.c				\
 		builtins/echo.c				\
 		builtins/env.c				\
 		builtins/exit.c				\

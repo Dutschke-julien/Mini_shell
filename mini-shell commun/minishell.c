@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/12 17:55:02 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/20 13:41:03 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	main(int argc, char **argv, char **env)
 	init_struct_var(mini, env);
 	while (42)
 	{
-		signal(SIGINT, handler);
-		signal(SIGQUIT, SIG_IGN);
+		signals();
 		mini->input = readline("minishell>");
 		add_history(mini->input);
 		if (!mini->input)
@@ -36,9 +35,11 @@ int	main(int argc, char **argv, char **env)
 			if (mini->nb_pipe == 0)
 			{	
 				mini->tab_tok = ft_split(mini->cmd[i], ' ');
-				if (is_builtin(mini) == 1)
+				if (ft_strncmp(mini->tab_tok[0], "<<", 2) == 0)
+					heredoc(&mini->tab_tok[0][2], mini);
+				else if (is_builtin(mini) == 1)
 					exec_builtins_all(mini);
-				if (is_builtin(mini) == 0)
+				else if (is_builtin(mini) == 0)
 					execve_cmd_exec(mini);
 				ft_free(mini->tab_tok);
 			}
