@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   check_str_token.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 13:57:49 by averon            #+#    #+#             */
-/*   Updated: 2022/10/24 18:40:40 by jdutschk         ###   ########.fr       */
+/*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
+/*   Updated: 2022/10/24 16:45:00 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-static char	*ft_strcpys(char *dest, const char *src)
+void	check_str_token(char **tab)
 {
 	int	i;
 
 	i = 0;
-	while (src[i] != '\0')
+	while (tab[i])
 	{
-		dest [i] = src[i];
+		if (tab[i][ft_strlen(tab[i]) - 1] == '6')
+			change_dollar_in_str(tab[i]);
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
 }
 
-char	*ft_strdup(const char *s1)
+void	change_dollar_in_str(char *str)
 {
-	char	*dest;
+	int	i;
 
-	dest = malloc (sizeof(*dest) * ft_strlen((char *)s1) + 1);
-	if (dest == NULL)
-		return (NULL);
-	ft_strcpys(dest, s1);
-	return (dest);
+	i = 0;
+	(void)str;
 }

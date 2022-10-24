@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:37:54 by averon            #+#    #+#             */
-/*   Updated: 2022/10/05 16:05:49 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/24 18:43:27 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,12 @@ int	ft_isnumber(char *str)
 			return (0);
 	}
 	return (1);
+}
+
+int	is_occurence(char c)
+{
+	if (c == '<' || c == '>' || c == '$' || c == '"' || c == 39 || c == '|')
+		return (1);
+	else
+		return (0);
 }

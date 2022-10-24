@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   recreate_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 13:57:49 by averon            #+#    #+#             */
-/*   Updated: 2022/10/24 18:40:40 by jdutschk         ###   ########.fr       */
+/*   Created: 2022/10/19 17:58:06 by jdutschk          #+#    #+#             */
+/*   Updated: 2022/10/20 13:58:20 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-static char	*ft_strcpys(char *dest, const char *src)
+int	all_strlen(char **tab)
 {
 	int	i;
+	int	longueur;
 
 	i = 0;
-	while (src[i] != '\0')
+	longueur = 0;
+	while (tab[i])
 	{
-		dest [i] = src[i];
+		longueur = longueur + ft_strlen(tab[i]);
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (longueur);
 }
 
-char	*ft_strdup(const char *s1)
+char	*recreate_input(char **tab)
 {
-	char	*dest;
+	char	*str;
+	int		i;
 
-	dest = malloc (sizeof(*dest) * ft_strlen((char *)s1) + 1);
-	if (dest == NULL)
-		return (NULL);
-	ft_strcpys(dest, s1);
-	return (dest);
+	str = ft_calloc(1, 1);
+	i = 0;
+	while (tab[i])
+	{
+		str = ft_strjoin(str, tab[i]);
+		str = ft_strjoin(str, " ");
+		i++;
+	}
+	return (str);
 }
