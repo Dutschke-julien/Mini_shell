@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:13:16 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/20 14:40:14 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:31:22 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	change_output_fd(char **tab)
 {
 	int	i;
 	int	fd;
-	int	old_fd;
 
 	i = 0;
 	fd = 1;
@@ -24,10 +23,9 @@ int	change_output_fd(char **tab)
 	{
 		if (is_exit(tab[i]))
 		{
-			old_fd = fd;
 			fd = open(&tab[i][1], O_RDWR | O_CREAT | O_TRUNC, 0777);
-			if (fd != 1 && old_fd != 1)
-				close(old_fd);
+			if (fd == -1)
+				printf("error\n");
 			delete_case(tab, i);
 		}
 		else
