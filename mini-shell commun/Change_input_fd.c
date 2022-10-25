@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:36:43 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/20 14:39:59 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:27:54 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	change_input_fd(char **tab)
 {
 	int	i;
 	int	fd;
-	int	old_fd;
 
 	i = 0;
 	fd = 0;
@@ -24,10 +23,7 @@ int	change_input_fd(char **tab)
 	{
 		if (is_enter(tab[i]))
 		{
-			old_fd = fd;
 			fd = open(&tab[i][1], O_RDONLY);
-			if (fd != 0 && old_fd != 0)
-				close(old_fd);
 			delete_case(tab, i);
 			if (fd == -1)
 				printf("erreur fichier non existant");
@@ -59,4 +55,16 @@ int	is_enter(char *str)
 	}
 	else
 		return (0);
+}
+
+void	close_all_fd(void)
+{
+	int	i;
+
+	i = 2;
+	while (i != 256)
+	{
+		close(i);
+		i++;
+	}
 }

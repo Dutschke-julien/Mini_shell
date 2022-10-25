@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/24 19:09:12 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:29:30 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int			is_enter(char *str);
 void		delete_case(char **tab, int local_case);
 int			change_output_fd(char **tab);
 int			is_exit(char *str);
+void		close_all_fd(void); //utiliser pour tout fermer
 
 //replace_str_tab
 void		replace_str_space_tab(char **tab);
