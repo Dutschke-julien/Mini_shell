@@ -6,24 +6,29 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/10/20 14:43:52 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/25 17:49:07 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	execve_cmd_exec(t_core *mini)
+/*void	execve_cmd_exec(t_core *mini)
 {
 	mini->pid = fork();
+	
 	if (mini->pid == 0)
 	{
 		get_path(mini);
 		if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
 			perror("pb with execve\n");
+		exit(0);
 	}
 	else
+	{
+		close(mini->fd_output);
 		wait(NULL);
-}
+	}
+}*/
 
 void	exec_cmd_pipex(t_core *mini, int i)
 {

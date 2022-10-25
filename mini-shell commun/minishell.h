@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/25 16:29:30 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:56:21 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+
+
+/*
+token 0 = chaine simple
+token 1 = <
+token 2 = >
+token 3 = <<
+token 4 = >>
+token 5 = $
+token 6 = "
+token 7 = '
+token 8 = | 
+*/
 
 int				g_exit_status;
 
@@ -76,7 +89,6 @@ int			is_enter(char *str);
 void		delete_case(char **tab, int local_case);
 int			change_output_fd(char **tab);
 int			is_exit(char *str);
-void		close_all_fd(void); //utiliser pour tout fermer
 
 //replace_str_tab
 void		replace_str_space_tab(char **tab);
@@ -134,7 +146,7 @@ char		*get_path(t_core *mini);
 void		exit_exec(t_core *mini);
 
 // exec
-void		execve_cmd_exec(t_core *mini);
+//void		execve_cmd_exec(t_core *mini);
 void		exec_cmd_pipex(t_core *mini, int i);
 int			exec_builtins_all(t_core *mini);
 //int		exec_builtins_parent(t_core *mini);

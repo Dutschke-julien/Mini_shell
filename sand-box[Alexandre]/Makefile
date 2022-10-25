@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
+#    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/10/19 18:13:56 by averon           ###   ########.fr        #
+#    Updated: 2022/10/24 19:07:37 by jdutschk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,15 @@ SRCS = 	minishell.c					\
 		builtins/export2.c			\
 		builtins/pwd.c				\
 		builtins/unset.c			\
+		Change_input_fd.c			\
+		Change_output_fd.c			\
+		check_str_token.c			\
+		define_str_token.c			\
+		recreate_input.c			\
+		replace_all_symbol.c 		\
+		replace_str_tab.c			\
+		update_input.c				
+		
 
 OBJS = $(SRCS:.c=.o)
 
