@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/25 16:30:33 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:44:23 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,14 @@ void		define_tab_tokens(char **tab);
 int			all_strlen(char **tab);
 char		*recreate_input(char **tab);
 
+//str_tranform_dollar
+void		change_dollar_in_str(char *str, char **env);
+void		replace_str_by_env(char *str, char **env);
+
 //check_str_token
-void		check_str_token(char **tab);
-void		change_dollar_in_str(char *str);
+void		check_str_token(char **tab, char **env);
+char		*transform_str_dollar(char **tab, int *space_data, char **env);
+char		*transforming_into_six(char *str);
 
 //update_input
 char		*update_input(char *str, int i, int j);

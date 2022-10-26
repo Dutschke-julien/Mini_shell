@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/20 13:41:03 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/26 14:27:19 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv, char **env)
 		else if (mini->input)
 		{
 			input_split(mini);
-			if (mini->nb_pipe == 0)
+			/*if (mini->nb_pipe == 0)
 			{	
 				mini->tab_tok = ft_split(mini->cmd[i], ' ');
 				if (ft_strncmp(mini->tab_tok[0], "<<", 2) == 0)
@@ -45,6 +45,7 @@ int	main(int argc, char **argv, char **env)
 			}
 			else
 				pipex(mini);
+			*/
 		}
 		free(mini->input);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/10/25 17:49:07 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/26 14:21:11 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	exec_cmd_pipex(t_core *mini, int i)
 	ft_free(mini->tab_tok);
 	exit(0);
 }
-
 
 int	exec_builtins_all(t_core *mini)
 {
