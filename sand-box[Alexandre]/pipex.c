@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 12:22:35 by averon            #+#    #+#             */
-/*   Updated: 2022/10/25 17:49:08 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/26 14:53:51 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	pipex(t_core *mini)
 		pid = fork();
 		if (pid == 0)
 		{
-			dup2(fd, STDIN_FILENO);
+			dup2(mini->fd_input, STDIN_FILENO);
 			if (i < mini->nb_pipe)
 				dup2(mini->tube[1], STDOUT_FILENO);
 			else
 			{
 				mini->tube[1] = mini->fd_output;
 				dup2(mini->tube[1], STDOUT_FILENO);
-				mini->tube[1] = mini->fd_output;
+				//mini->tube[1] = mini->fd_output;
 			}
 			ft_child_process(mini, i);
 		}

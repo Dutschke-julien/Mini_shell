@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/25 17:56:21 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/26 16:19:52 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,16 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-
 /*
 token 0 = chaine simple
-token 1 = <
-token 2 = >
-token 3 = <<
-token 4 = >>
-token 5 = $
-token 6 = "
-token 7 = '
-token 8 = | 
+token 1 = <		"dir_in"
+token 2 = > 	"dir_out"
+token 3 = << 	"heredoc"
+token 4 = >> 	"append"
+token 5 = $ 	"dollar"
+token 6 = " 	"double_quote"
+token 7 = ' 	"single_quote"
+token 8 = |  	"pipe"
 */
 
 int				g_exit_status;
@@ -85,10 +84,12 @@ int			change_input_fd(char **tab);
 char		*cmd_with_space(char *str, int i, int j);
 int			cmpt_this(char *str, char c);
 int			get_tokens(char *str);
-int			is_enter(char *str);
+int			is_dir_in(char *str);
+int			is_heredoc(char *str);
 void		delete_case(char **tab, int local_case);
 int			change_output_fd(char **tab);
-int			is_exit(char *str);
+int			is_dir_out(char *str);
+int			is_append(char *str);
 
 //replace_str_tab
 void		replace_str_space_tab(char **tab);
@@ -124,10 +125,8 @@ char		*dollar_is_in_env(char **envp, char *str);
 
 // heredoc
 
-void		heredoc(char *name, t_core *mini);
-void		heredoc_loop(char *limiter, int fd, t_core *mini);
-int			heredoc_error(int *fd);
-void		heredoc_cat(char *limiter);
+int			heredoc(char *name);
+int			heredoc_loop(char *limiter, int fd);
 
 // pipex
 void		pipex(t_core *mini);

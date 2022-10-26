@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Change_output_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:13:16 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/25 16:29:01 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:19:15 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,14 @@ int	change_output_fd(char **tab)
 	fd = 1;
 	while (tab[i])
 	{
-		if (is_exit(tab[i]))
+		if (is_dir_out(tab[i]))
 		{
 			fd = open(&tab[i][1], O_RDWR | O_CREAT | O_TRUNC, 0777);
+			delete_case(tab, i);
+		}
+		else if (is_append(tab[i]))
+		{
+			fd = open(&tab[i][2], O_RDWR | O_CREAT | O_APPEND, 0777);
 			delete_case(tab, i);
 		}
 		else
@@ -32,12 +37,26 @@ int	change_output_fd(char **tab)
 	return (fd);
 }
 
-int	is_exit(char *str)
+int	is_dir_out(char *str)
 {
 	int	i;
 
 	i = ft_strlen(str) - 1;
 	if (str[i] == '2')
+	{
+		str[i] = '\0';
+		return (1);
+	}
+	else
+		return (0);
+}
+
+int	is_append(char *str)
+{
+	int	i;
+
+	i = ft_strlen(str) - 1;
+	if (str[i] == '4')
 	{
 		str[i] = '\0';
 		return (1);
