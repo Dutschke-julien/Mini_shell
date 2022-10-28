@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/26 16:21:21 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/28 13:45:02 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 int	main(int argc, char **argv, char **env)
 {	
 	t_core	*mini;
-	int		i;
 
-	i = 0;
+
 	(void)argc;
 	(void)argv;
 	init_struct_core(&mini);
 	init_struct_var(mini, env);
 	while (42)
 	{
-		signals();
+		signals_run(1);
 		mini->input = readline("minishell> ");
 		add_history(mini->input);
 		if (!mini->input)
