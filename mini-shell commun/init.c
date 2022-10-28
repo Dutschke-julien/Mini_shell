@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:38:11 by averon            #+#    #+#             */
-/*   Updated: 2022/10/03 19:19:00 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/28 16:08:37 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	init_struct_core(t_core **mini)
 void	init_struct_var(t_core *mini, char **env)
 {
 	mini->envp = init_env(env);
-	//mini->infile = 0;
-	//mini->outfile = 0;
+	mini->fd_input = 0;
+	mini->fd_output = 1;
 	mini->cmd = NULL;
 	mini->nb_pipe = 0;
 	mini->tab_tok = NULL;
