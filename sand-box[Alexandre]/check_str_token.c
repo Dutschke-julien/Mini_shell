@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_str_token.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/24 16:45:00 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/28 13:50:15 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	check_str_token(char **tab)
 
 void	change_dollar_in_str(char *str)
 {
-	int	i;
+	//int	i;
 
-	i = 0;
+	//i = 0;
 	(void)str;
 }

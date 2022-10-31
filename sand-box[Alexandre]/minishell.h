@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/26 16:19:52 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/28 13:47:36 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,19 +145,17 @@ char		*get_path(t_core *mini);
 void		exit_exec(t_core *mini);
 
 // exec
-//void		execve_cmd_exec(t_core *mini);
 void		exec_cmd_pipex(t_core *mini, int i);
 int			exec_builtins_all(t_core *mini);
-//int		exec_builtins_parent(t_core *mini);
-//int		exec_builtins_child(t_core *mini);
 
 // free
 void		free_minishell(void);
 
 // signal
-void		signals(void);
-void		sig_handler(int signal);
-void		signal_hd_loop(void);
+void		signals_run(int sig);
+void		restore_prompt(int sig);
+void		ctrl_c(int sig);
+void		back_slash(int sig);
 void		sig_hd_handler(int signal);
 
 //BUILTINS
