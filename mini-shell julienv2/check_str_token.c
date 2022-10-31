@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/26 17:57:18 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:13:11 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*transform_str_dollar(char **tab, int *space_data, char **env)
 	i = 0;
 	while (tab[i])
 	{
-		if (tab[i][0] == '$')
+		while (tab[i][0] == '$')
 		{
 			if (is_in_env(env, &tab[i][1]))
 				replace_str_by_env(tab[i], env);
@@ -86,11 +86,8 @@ char	*transform_str_dollar(char **tab, int *space_data, char **env)
 
 void	replace_str_by_env(char *str, char **env)
 {
-	int	i;
-
-	i = 0;
-	
-	ft_strcpy(str, )//
+	(void)env;
+	ft_strcpy(str, getenv(&str[1]));
 	return ;
 }
 

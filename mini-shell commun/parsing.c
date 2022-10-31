@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/24 18:51:31 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:17:39 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	input_split(t_core *mini)
 {
 	char	**tab_of_tokens;
 	char	*working_input;
+	int		i;
 
+	i = 0;
 	working_input = update_input(mini->input, 0, 0);
 	replace_all_symbol(working_input);
 	change_spc(working_input, '"', '"');
