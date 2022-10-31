@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/28 13:47:36 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/31 11:45:38 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int			ft_isnumber(char *str);
 int			is_occurence(char c);
 
 //	minishel + init
+void		exit_mini(t_core *mini);
 void		init_struct_core(t_core **mini);
 void		init_struct_var(t_core *mini, char **env);
 
@@ -142,14 +143,13 @@ void		print_env(char **envp, char *envp_name);
 // exec_utils
 char		*bin_dir_cat(t_core *mini);
 char		*get_path(t_core *mini);
-void		exit_exec(t_core *mini);
 
 // exec
 void		exec_cmd_pipex(t_core *mini, int i);
 int			exec_builtins_all(t_core *mini);
 
 // free
-void		free_minishell(void);
+void		free_minishell(t_core *mini);
 
 // signal
 void		signals_run(int sig);

@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:51:34 by averon            #+#    #+#             */
-/*   Updated: 2022/10/20 14:40:34 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/31 11:45:48 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,4 @@ char	*get_path(t_core *mini)
 	else
 		free(path);
 	return (mini->tab_tok[0]);
-}
-
-void	exit_exec(t_core *mini)
-{
-	ft_putendl_fd("exit", 1);
-	free(mini->input);
-	exit(0);
 }

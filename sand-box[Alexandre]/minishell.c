@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/28 16:08:09 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/31 11:46:11 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	main(int argc, char **argv, char **env)
 		signals_run(1);
 		mini->input = readline("minishell> ");
 		add_history(mini->input);
-		if (!mini->input)
-			exit_exec(mini);
+		if (!mini->input || mini->input[0] == '\04')
+			exit_mini(mini);
 		else if (mini->input)
 		{
 			input_split(mini);
@@ -35,4 +35,11 @@ int	main(int argc, char **argv, char **env)
 		free(mini->input);
 	}
 	return (0);
+}
+
+void	exit_mini(t_core *mini)
+{
+	ft_putendl_fd("exit", 1);
+	free_minishell(mini);
+	exit(0);
 }

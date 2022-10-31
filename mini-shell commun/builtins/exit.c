@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:12:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/12 18:07:47 by averon           ###   ########.fr       */
+/*   Updated: 2022/10/31 11:39:24 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ int	exec_exit(t_core *mini)
 		numeric_arg_req(mini);
 		return (0);
 	}
-	//g_exit_status = ft_atoi(mini->tab_tok[1]);
 	ft_putstr_fd("exit\n", 2);
-	//free_minishell() *** a completer ***
+	free_minishell(mini);
 	exit(g_exit_status);
 	return (0);
 }
@@ -72,5 +71,4 @@ void	numeric_arg_req(t_core *mini)
 	ft_putstr_fd(mini->tab_tok[1], 2);
 	ft_putendl_fd(": numeric argument required", 2);
 	exit(2);
-	//return (1);
 }
