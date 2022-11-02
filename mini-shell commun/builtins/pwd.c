@@ -6,27 +6,21 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 17:32:26 by averon            #+#    #+#             */
-/*   Updated: 2022/10/19 17:59:55 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/01 19:35:51 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	exec_pwd(t_core *mini)
-{
-	update_pwd(mini->envp); //a ressortir de la fonction
-	print_pwd();
-	return (0);
-}
-
-void	print_pwd(void)
+int	exec_pwd(void)
 {
 	char	*wd;
 
 	wd = malloc(1024);
 	getcwd(wd, 1024);
-	printf("%s\n", wd);	
+	printf("%s\n", wd);
 	free(wd);
+	return (0);
 }
 
 void	update_pwd(char **envp)

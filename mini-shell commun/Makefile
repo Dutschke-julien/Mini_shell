@@ -6,7 +6,7 @@
 #    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/10/31 11:13:12 by averon           ###   ########.fr        #
+#    Updated: 2022/11/02 15:07:16 by averon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,11 @@ SRCS = 	minishell.c					\
 		exec_utils.c				\
 		exec.c						\
 		expanse_dollar.c			\
-		free.c						\
 		heredoc.c					\
 		init.c						\
 		parsing.c					\
 		pipex.c						\
 		signal.c					\
-		builtins/builtins_utils.c	\
 		builtins/cd.c				\
 		builtins/cd2.c				\
 		builtins/echo.c				\

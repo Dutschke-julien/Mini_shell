@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_str_token.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/26 18:13:11 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/01 14:08:54 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ char	*transform_str_dollar(char **tab, int *space_data, char **env)
 	i = 0;
 	while (tab[i])
 	{
-		while (tab[i][0] == '$')
+		printf("test segfault tab[%d]: %s***\n", i, tab[i]);
+		if (tab[i][0] == '$')
 		{
 			if (is_in_env(env, &tab[i][1]))
 				replace_str_by_env(tab[i], env);

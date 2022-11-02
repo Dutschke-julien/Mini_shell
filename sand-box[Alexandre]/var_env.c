@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 12:52:36 by averon            #+#    #+#             */
-/*   Updated: 2022/10/12 17:50:56 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/02 15:06:50 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	is_in_env(char **envp, char *str)
 			len++;
 	while (envp[i])
 	{
-		if (!ft_strncmp(envp[i], str, len))
+		if (!ft_strncmp(envp[i], str, len) && envp[i][len] == '=')
 			return (1);
 		i++;
 	}

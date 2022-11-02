@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:33:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/19 18:15:05 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/01 18:41:40 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	exec_cd2(t_core *mini, char *temp_pwd)
 {
 	if (ft_strcmp(mini->tab_tok[1], "..") == 0)
 	{
-		printf("cd: controle ..: %s\n", mini->tab_tok[1]);
 		get_upper_dir(mini->envp);
 		update_oldpwd(mini->envp, temp_pwd);
 		update_pwd(mini->envp);
@@ -66,4 +65,3 @@ void	get_home(char **envp)
 	else
 		printf("no home directory !?");
 }
-

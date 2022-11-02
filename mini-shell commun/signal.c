@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 12:06:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/28 13:46:11 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/01 18:49:01 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,28 @@ void	back_slash(int sig)
 	(void)sig;
 }
 
+// NON INTERACTIF : idem bash
 
-/*
+// ctrl C: (SIGINT)
+//	- en cours de frappe: passe à la ligne 
+//		et nouveau prompt (on garde ^C dans minishell) ---> OK
+//	- sur ligne vide: idem ---> OK
 
-NON INTERACTIF : idem bash
+// ctrl D: (EOT)
+//	- en cours de frappe: ne fait rien ---> OK	
+//	- sur ligne vide: écrit "exit" et quitte bash ---> OK
 
-ctrl C: (SIGINT)
-	- en cours de frappe: passe à la ligne et nouveau prompt (on garde ^C dans minishell) ---> OK
-	- sur ligne vide: idem ---> OK
+//ctrl \: (SIGQUIT)
+//	- en cours de frappe: ne fait rien ---> OK
+//	- sur ligne vide: ne fait rien ---> OK
 
-ctrl D: (EOT)
-	- en cours de frappe: ne fait rien ---> OK	
-	- sur ligne vide: écrit "exit" et quitte bash ---> OK
+//INTERACTIF:
 
-ctrl \: (SIGQUIT)
-	- en cours de frappe: ne fait rien ---> OK
-	- sur ligne vide: ne fait rien ---> OK
+//ctrl C: interruption (SIGINT)
+//	- ecrit ^C, passe a la ligne et donne le prompt ---> OK
 
+//ctrl D: EOF
+//	- donne le prompt ---> OK
 
-INTERACTIF:
-
-ctrl C: interruption (SIGINT)
-	- ecrit ^C, passe a la ligne et donne le prompt ---> OK
-
-ctrl D: EOF
-	- donne le prompt ---> OK
-
-ctrl \: 
-	- ecrit "^\Quit: 3" et passe à la ligne et donne le prompt" --> OK
-
- */
+//ctrl \: 
+//	- ecrit "^\Quit: 3" et passe à la ligne et donne le prompt" --> OK

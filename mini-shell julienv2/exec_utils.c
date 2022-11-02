@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:51:34 by averon            #+#    #+#             */
-/*   Updated: 2022/10/20 14:40:34 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/01 15:08:50 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char	*get_path(t_core *mini)
 	}
 	else
 		free(path);
+	printf("ctrl PATH: %s***\n", mini->tab_tok[0]);
 	return (mini->tab_tok[0]);
 }
 
