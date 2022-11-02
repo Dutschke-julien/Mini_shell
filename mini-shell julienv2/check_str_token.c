@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/26 18:13:11 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:27:37 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	change_dollar_in_str(char *str, char **env)
 		}
 		i++;
 	}
+	replace_cote(str);
 	str = transform_str_dollar(ft_split(str, ' '), data_space, env);
 }
 
@@ -61,14 +62,15 @@ char	*transform_str_dollar(char **tab, int *space_data, char **env)
 	char	*s1;
 	int		i;
 	(void)space_data;
-
 	i = 0;
 	while (tab[i])
 	{
-		while (tab[i][0] == '$')
+		if (tab[i][0] == '$')
 		{
 			if (is_in_env(env, &tab[i][1]))
-				replace_str_by_env(tab[i], env);
+			{
+				replace_str_by_env(tab[i], env);	
+			}
 			else
 				delete_case(tab, i);
 		}
@@ -77,7 +79,7 @@ char	*transform_str_dollar(char **tab, int *space_data, char **env)
 	i = 0;
 	while (tab[i])
 	{
-		printf("%s ", tab[i]);
+		printf("%s\n", tab[i]);
 		i++;
 	}
 	s1 = NULL;
@@ -96,7 +98,7 @@ char	*transforming_into_six(char *str)
 	int		i;	
 	char	*s1;
 
-	s1 = ft_calloc(1, (ft_strlen(str) + 4));
+	s1 = ft_calloc(1, (ft_strlen(str) + 5));
 	i = 0;
 	s1[0] = '"';
 	while (str[i])
@@ -104,8 +106,9 @@ char	*transforming_into_six(char *str)
 		s1[i + 1] = str[i];
 		i++;
 	}
-	s1[i] = '"';
-	s1[i + 1] = '6';
+	s1[i] = ' ';
+	s1[i + 1] = '"';
+	s1[i + 2] = '6';
 	free (str);
 	return (s1);
 }
