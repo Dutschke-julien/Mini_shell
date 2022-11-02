@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/26 16:39:34 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:19:44 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ void	input_split(t_core *mini)
 		i++;
 	}*/
 	mini->input = recreate_input(tab_of_tokens);
-	printf(" new chain is ---> %s\n", mini->input);
-	mini->cmd = ft_split(mini->input, '|');
-	mini->nb_pipe = pipe_calc(mini->cmd);
+	//mini->cmd = ft_split(mini->input, '|');
+	//mini->nb_pipe = pipe_calc(mini->cmd);
 }
 
 void	reset_token(char **tab)
@@ -63,5 +62,15 @@ void	reset_token(char **tab)
 	}
 }
 
-/*																*/
+void	replace_cote(char *str)
+{
+	int i;
 
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '"' )
+			str[i] = ' ';
+		i++;
+	}	
+}

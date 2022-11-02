@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/26 17:44:23 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:20:01 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_core
 //[parsing]
 void		reset_token(char **tab);
 void		define_tab_tokens(char **tab);
+void		replace_cote(char *str);
 
 //recreate_input
 int			all_strlen(char **tab);
