@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:07:29 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/24 18:30:28 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/02 18:24:03 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ char	*define_str_token2(char *str)
 {
 	char	*s1;
 
-	s1 = malloc(ft_strlen(str) + 1);
-	s1 = ft_strcpy(s1, str);
+	s1 = ft_strdup(str);
 	if (s1[0] == '>' && s1[1] == '>')
 	{
 		s1[ft_strlen(s1) + 1] = '\0';
@@ -115,5 +114,3 @@ void	change_pipe_in_str(char *str)
 		i++;
 	}
 }
-
-

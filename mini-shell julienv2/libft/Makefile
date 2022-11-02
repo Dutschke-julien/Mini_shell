@@ -6,7 +6,7 @@
 #    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 09:52:49 by alexandreve       #+#    #+#              #
-#    Updated: 2022/10/24 18:12:32 by jdutschk         ###   ########.fr        #
+#    Updated: 2022/11/02 20:43:58 by jdutschk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS = 	ft_atoi.c 		ft_bzero.c		ft_calloc.c		ft_free.c		\
 		ft_printf.c														\
 		ft_printf_hexa.c				ft_printf_ptr.c					\
 		ft_printf_unsint.c				ft_printf_utils.c				\
-		ft_strcpy.c
+		ft_strcpy.c	
 
 OBJS = $(SRCS:.c=.o)
 

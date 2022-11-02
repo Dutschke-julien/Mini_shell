@@ -6,7 +6,7 @@
 #    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/10/24 19:07:37 by jdutschk         ###   ########.fr        #
+#    Updated: 2022/11/02 20:44:17 by jdutschk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCS = 	minishell.c					\
 		recreate_input.c			\
 		replace_all_symbol.c 		\
 		replace_str_tab.c			\
-		update_input.c				
+		update_input.c				\
+		check_str_token_2.c			\
 		
 
 OBJS = $(SRCS:.c=.o)
