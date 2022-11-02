@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:08:24 by averon            #+#    #+#             */
-/*   Updated: 2022/10/11 17:15:36 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/02 13:43:17 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	exec_export(t_core *mini)
 		if (is_in_env(mini->envp, mini->tab_tok[1]) == 0)
 			export_add_variable(mini, mini->tab_tok[1]);
 		else
-			export_change_value(mini->envp, mini->tab_tok[1]);	
+			export_change_value(mini->envp, mini->tab_tok[1]);
 	}
 	else
 		export_error(mini->tab_tok[1]);
@@ -83,13 +83,13 @@ char	**new_envp_export(t_core *mini, size_t size)
 	if (new == NULL)
 		return (NULL);
 	i = 0;
-	while (mini->envp[i] && i < (size - 1))
+	while (mini->envp[i] && i < (size))
 	{
 		new[i] = ft_strdup(mini->envp[i]);
 		i++;
 	}
-	new[i] = ft_strdup(mini->tab_tok[1]);
-	new[size] = 0;
+	new[i++] = ft_strdup(mini->tab_tok[1]);
+	new[i++] = 0;
 	ft_free(mini->envp);
 	return (new);
 }

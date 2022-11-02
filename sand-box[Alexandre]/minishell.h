@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/10/31 11:45:38 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/02 15:06:47 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ void		replace_symbol2(char *str, char c);
 int			is_odd(char *str, char c);
 
 // utils
-void		ft_free(char **str);
 int			ft_error(char *message);
 void		check_tab_char(char **tab);
 int			ft_strcmp(char *s1, char *s2);
@@ -113,6 +112,7 @@ int			is_occurence(char c);
 
 //	minishel + init
 void		exit_mini(t_core *mini);
+void		free_minishell(t_core *mini);
 void		init_struct_core(t_core **mini);
 void		init_struct_var(t_core *mini, char **env);
 
@@ -145,11 +145,10 @@ char		*bin_dir_cat(t_core *mini);
 char		*get_path(t_core *mini);
 
 // exec
+void		launch_exec(t_core *mini, int i);
 void		exec_cmd_pipex(t_core *mini, int i);
-int			exec_builtins_all(t_core *mini);
-
-// free
-void		free_minishell(t_core *mini);
+int			exec_builtins_no_fork(t_core *mini);
+int			exec_builtins_fork(t_core *mini);
 
 // signal
 void		signals_run(int sig);
@@ -159,10 +158,6 @@ void		back_slash(int sig);
 void		sig_hd_handler(int signal);
 
 //BUILTINS
-// Builtin_utils
-int			is_builtin(t_core *mini);
-int			is_forked_command(t_core *mini);
-
 // cd1
 int			exec_cd(t_core *mini);
 int			exec_cd2(t_core *mini, char *temp_pwd);
@@ -200,8 +195,7 @@ void		export_error(char *str);
 void		env_sort(char **envp);
 
 // pwd
-int			exec_pwd(t_core *mini);
-void		print_pwd(void);
+int			exec_pwd(void);
 void		update_pwd(char **envp);
 
 // unset
