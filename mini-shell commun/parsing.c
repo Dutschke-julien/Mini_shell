@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/10/28 13:49:12 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/03 18:10:16 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	input_split(t_core *mini)
 	define_tab_tokens(tab_of_tokens);
 	mini->fd_input = change_input_fd(tab_of_tokens);
 	mini->fd_output = change_output_fd(tab_of_tokens);
-	check_str_token(tab_of_tokens);
+	check_str_token(tab_of_tokens, 0);
 	reset_token(tab_of_tokens);
 	mini->input = recreate_input(tab_of_tokens);
 	mini->cmd = ft_split(mini->input, '|');
@@ -54,4 +54,17 @@ void	reset_token(char **tab)
 		tab[i][ft_strlen(tab[i]) - 1] = '\0';
 		i++;
 	}
+}
+
+void	replace_cote(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '"' )
+			str[i] = ' ';
+		i++;
+	}	
 }

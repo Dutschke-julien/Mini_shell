@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/11/02 20:42:24 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:27:58 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			all_strlen(char **tab);
 char		*recreate_input(char **tab);
 
 //str_tranform_dollar
-void		change_dollar_in_str(char *str, char **env);
+char		*change_dollar_in_str(char *str, char **env, int cmpt_space);
 char		*replace_str_by_env(char *str, char **env);
 
 //check_str_token

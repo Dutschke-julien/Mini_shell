@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
+#    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/11/02 15:07:16 by averon           ###   ########.fr        #
+#    Updated: 2022/11/03 18:07:55 by jdutschk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS = 	minishell.c					\
 		Change_input_fd.c			\
 		Change_output_fd.c			\
 		check_str_token.c			\
+		check_str_token_2.c			\
 		define_str_token.c			\
 		recreate_input.c			\
 		replace_all_symbol.c 		\

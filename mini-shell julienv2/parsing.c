@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/01 16:19:44 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:02:41 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,7 @@ void	input_split(t_core *mini)
 	mini->fd_output = change_output_fd(tab_of_tokens);
 	check_str_token(tab_of_tokens, mini->envp);
 	reset_token(tab_of_tokens);
-/*	int i = 0;
-	while (tab_of_tokens[i])
-	{
-		printf("case [%d] ---> %s\n", i, tab_of_tokens[i]);
-		i++;
-	}*/
-	mini->input = recreate_input(tab_of_tokens);
+	//mini->input = recreate_input(tab_of_tokens);
 	//mini->cmd = ft_split(mini->input, '|');
 	//mini->nb_pipe = pipe_calc(mini->cmd);
 }
