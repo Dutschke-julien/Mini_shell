@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/11/02 15:06:47 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/03 18:10:52 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,20 @@ typedef struct s_core
 //[parsing]
 void		reset_token(char **tab);
 void		define_tab_tokens(char **tab);
+void		replace_cote(char *str);
 
 //recreate_input
 int			all_strlen(char **tab);
 char		*recreate_input(char **tab);
 
-//check_str_token
-void		check_str_token(char **tab);
-void		change_dollar_in_str(char *str);
+//check_str_token[1..2]
+void		check_str_token(char **tab, char **env);
+char		*change_dollar_in_str(char *str, char **env, int cmpt_space);
+char		*transform_str_dollar2(char **tab, int *space_data);
+char		*add_space_str_dollar(char *str, int space);
+char		*transforming_into_six(char *str);
+char		*transform_str_dollar(char **tab, int *space_data, char **env);
+char		*replace_str_by_env(char *str, char **env);
 
 //update_input
 char		*update_input(char *str, int i, int j);

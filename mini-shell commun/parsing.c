@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/04 15:44:55 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/04 17:36:40 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	input_split(t_core *mini)
 	define_tab_tokens(tab_of_tokens);
 	mini->fd_input = change_input_fd(tab_of_tokens);
 	mini->fd_output = change_output_fd(tab_of_tokens);
-	check_str_token(tab_of_tokens, mini->envp);
+	check_str_token(tab_of_tokens, 0);
 	reset_token(tab_of_tokens);
 	mini->input = recreate_input(tab_of_tokens);
 	mini->cmd = ft_split(mini->input, '|');

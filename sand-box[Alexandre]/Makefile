@@ -6,7 +6,7 @@
 #    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/11/02 15:07:16 by averon           ###   ########.fr        #
+#    Updated: 2022/11/04 14:55:16 by averon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS = 	minishell.c					\
 		Change_input_fd.c			\
 		Change_output_fd.c			\
 		check_str_token.c			\
+		check_str_token_2.c			\
 		define_str_token.c			\
 		recreate_input.c			\
 		replace_all_symbol.c 		\
@@ -49,7 +50,6 @@ HEADERS =	./
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -g
-
 RM = rm -f
 
 all :		$(NAME)
