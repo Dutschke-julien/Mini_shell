@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/03 18:10:16 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:44:55 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	input_split(t_core *mini)
 	define_tab_tokens(tab_of_tokens);
 	mini->fd_input = change_input_fd(tab_of_tokens);
 	mini->fd_output = change_output_fd(tab_of_tokens);
-	check_str_token(tab_of_tokens, 0);
+	check_str_token(tab_of_tokens, mini->envp);
 	reset_token(tab_of_tokens);
 	mini->input = recreate_input(tab_of_tokens);
 	mini->cmd = ft_split(mini->input, '|');

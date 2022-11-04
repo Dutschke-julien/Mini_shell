@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:55:53 by averon            #+#    #+#             */
-/*   Updated: 2022/10/12 18:08:03 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/04 16:18:31 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,9 @@ void	echo_print_option(t_core *mini, int j)
 {
 	while (mini->tab_tok[j])
 	{
-		if (expanse_dollar(mini->envp, mini->tab_tok[j]))
-			j++;
-		else
-		{
-			printf("%s", mini->tab_tok[j]);
-			if (mini->tab_tok[++j])
-				printf(" ");
-		}
+		printf("%s", mini->tab_tok[j]);
+		if (mini->tab_tok[j + 1])
+			printf(" ");
+		j++;
 	}
 }

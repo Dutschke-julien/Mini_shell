@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
+#    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/11/03 18:07:55 by jdutschk         ###   ########.fr        #
+#    Updated: 2022/11/04 14:55:16 by averon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,6 @@ HEADERS =	./
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -g
-
 RM = rm -f
 
 all :		$(NAME)
