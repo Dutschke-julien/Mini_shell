@@ -1,10 +1,10 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2706
+{\rtf1\ansi\ansicpg1252\cocoartf2513
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;}
 {\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red251\green2\blue7;\red0\green0\blue233;
-\red251\green2\blue7;}
+}
 {\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c14913\c0;\cssrgb\c0\c0\c93333;
-\cssrgb\c100000\c14913\c0;}
-\paperw12240\paperh15840\margl1440\margr1440\vieww15160\viewh14460\viewkind0
+}
+\margl1440\margr1440\vieww14400\viewh20560\viewkind0
 \deftab720
 \pard\pardeftab720\sa280\partightenfactor0
 
@@ -69,9 +69,7 @@ Introduction\
 \'a0Yes\'a0\'a0No\
 \pard\pardeftab720\sa319\partightenfactor0
 
-\f0\b \cf2 echo 
-\fs28 \cf5 NOK echo $ ou echo $hfgjhd donne 6
-\fs24 \cf2 \
+\f0\b \cf2 echo \cf3 OK\cf2 \
 \pard\pardeftab720\sa240\partightenfactor0
 
 \f1\b0 \cf2 - Lancez la commande echo avec et sans argument ou options, ou avec\uc0\u8232 l'option -n.\u8232 - R\'e9p\'e9tez ce test plusieurs fois avec diff\'e9rents arguments.\u8232 - En cas de crash, cochez le flag "crash".\u8232 - Si quelque chose ne marche pas, cochez le flag "incomplete work".\u8232 \
@@ -92,13 +90,12 @@ Introduction\
 \pard\pardeftab720\sa319\partightenfactor0
 
 \f0\b \cf2 Valeur de retour d'un processus 
-\fs28 \cf3 NOK echo $? Affiche 6 au lieu de 0
-\fs24 \cf2 \
+\f1\b0 \cf3 NOK
+\f0\b \cf2 \
 \pard\pardeftab720\sa240\partightenfactor0
 
-\f1\b0 \cf2 - Ex\'e9cutez des commandes simple avec un chemin absolu tel que /bin/ls\uc0\u8232 ou n'importe quelle autre commande avec des arguments mais sans \'91\'92\u8232 (single quotes) ni "" (double quotes), puis lancez "echo $?".\u8232 V\'e9rifiez la valeur affich\'e9e. Vous pouvez le refaire dans bash et\u8232 comparer. \cf3 \
-\cf2 - R\'e9p\'e9tez ce test plusieurs fois avec diff\'e9rentes commandes et\uc0\u8232 diff\'e9rents arguments.\u8232 - Utilisez des commandes qui ne fonctionnent pas telles que '/bin/ls\u8232 fichiernul'.\u8232 - Essayez des expressions telles que $? + $?\u8232 - En cas de crash, cochez le flag "crash".\u8232 - Si quelque chose ne marche pas, cochez le flag "incomplete work"\cf3 \
-\cf2 \
+\f1\b0 \cf2 - Ex\'e9cutez des commandes simple avec un chemin absolu tel que /bin/ls\uc0\u8232 ou n'importe quelle autre commande avec des arguments mais sans \'91\'92\u8232 (single quotes) ni "" (double quotes), puis lancez "echo $?".\u8232 V\'e9rifiez la valeur affich\'e9e. Vous pouvez le refaire dans bash et\u8232 comparer. \u8232 - R\'e9p\'e9tez ce test plusieurs fois avec diff\'e9rentes commandes et\u8232 diff\'e9rents arguments.\u8232 - Utilisez des commandes qui ne fonctionnent pas telles que '/bin/ls\u8232 fichiernul'.\u8232 - Essayez des expressions telles que $? + $?\u8232 - En cas de crash, cochez le flag "crash".\u8232 - Si quelque chose ne marche pas, cochez le flag "incomplete work"\cf3 \
+Probl\'e8me avec espace manquant si echo $? + $?\cf2 \
 \pard\pardeftab720\partightenfactor0
 \cf2 \'a0Yes\'a0\'a0No\
 \pard\pardeftab720\sa319\partightenfactor0
@@ -113,7 +110,7 @@ Introduction\
 \'a0Yes\'a0\'a0No\
 \pard\pardeftab720\sa319\partightenfactor0
 
-\f0\b \cf2 Double Quotes \cf3 OK\cf2 \
+\f0\b \cf2 Double Quotes \cf3 NOK probleme espaces apr\'e8s > \cf2 \
 \pard\pardeftab720\sa240\partightenfactor0
 
 \f1\b0 \cf2 - Ex\'e9cutez une commande simple avec des arguments, mais cette fois\uc0\u8232 utilisez des guillemets (rajoutez des ';' et des espaces entre les\u8232 guillemets).\u8232 - Essayez une commande comme : echo "cat lol.c | cat > lol.c"\u8232 - N'essayez pas $.\u8232 - En cas de crash, cochez le flag "crash".\u8232 - Si quelque chose ne marche pas, cochez le flag "incomplete work".\u8232 \
@@ -123,21 +120,17 @@ Introduction\
 \'a0Yes\'a0\'a0No\
 \pard\pardeftab720\sa319\partightenfactor0
 
-\f0\b \cf2 Single Quotes \cf3 NOK
-\f1\b0  echo '$USER' donne \'91  $USER'
-\f0\b \cf2 \
+\f0\b \cf2 Single Quotes \cf3 OK\cf2 \
 \pard\pardeftab720\sa240\partightenfactor0
 
 \f1\b0 \cf2 - Ex\'e9cutez des commandes avec des single quotes dans les arguments.\uc0\u8232 - Essayez des arguments vides.\u8232 - Faites des tests avec des variables d'environnement, des espaces, des\u8232 pipes, des redirections entre les guillemets.\u8232 - echo '$USER' doit afficher "$USER"\u8232 - Rien ne devrait \'eatre interpr\'e9t\'e9.\u8232 \
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 \
-\'a0Yes\'a0\'a0No 
-\f0\b \cf3 OK
-\f1\b0 \cf2 \
+\'a0Yes\'a0\'a0No \
 \pard\pardeftab720\sa319\partightenfactor0
 
-\f0\b \cf2 env\
+\f0\b \cf2 env \cf3 OK\cf2 \
 \pard\pardeftab720\sa240\partightenfactor0
 
 \f1\b0 \cf2 - V\'e9rifiez qu'env vous affiche bien les variables d'environnement.\uc0\u8232 \
@@ -157,9 +150,7 @@ Introduction\
 \'a0Yes\'a0\'a0No\
 \pard\pardeftab720\sa319\partightenfactor0
 
-\f0\b \cf2 unset \cf3 OK
-\f1\b0  segfault si 2 variables 
-\f0\b \cf2 \
+\f0\b \cf2 unset \cf3 OK (une seule variable a la fois. Ne g\'e8re pas la deuxi\'e8me) \cf2 \
 \
 \pard\pardeftab720\sa240\partightenfactor0
 
@@ -170,9 +161,7 @@ Introduction\
 \'a0Yes\'a0\'a0No\
 \pard\pardeftab720\sa319\partightenfactor0
 
-\f0\b \cf2 cd 
-\f1\b0 \cf3 N
-\f0\b OK ne fonction pas avec les r\'e9pertoires renfermant des espaces\cf2 \
+\f0\b \cf2 cd \cf3 OK\cf2 \
 \pard\pardeftab720\sa240\partightenfactor0
 
 \f1\b0 \cf2 - Utilisez la commande cd pour vous d\'e9placer dans l'arborescence et\uc0\u8232 utilisez /bin/ls pour v\'e9rifier que vous \'eates dans le bon r\'e9pertoire.\u8232 - R\'e9p\'e9tez ce test plusieurs fois avec des cd qui fonctionnent et qui\u8232 ne fonctionnent pas.\u8232 - Essayez aussi '.' et '..' en arguments.\u8232 \
@@ -246,15 +235,22 @@ Introduction\
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 \
-\'a0Yes\'a0\'a0No \cf3 NOK\cf2 \
+\'a0Yes\'a0\'a0No \cf3 OK\cf2 \
 \pard\pardeftab720\sa319\partightenfactor0
 
 \f0\b \cf2 Variables d'environnement\
 \pard\pardeftab720\sa240\partightenfactor0
 
-\f1\b0 \cf2 - Ex\'e9cutez echo avec des variables d'environnement ($variable) en argument.\uc0\u8232 - Assurez-vous que $ est interpr\'e9t\'e9 correctement.\u8232 - V\'e9rifiez que les guillemets autour des $variables fonctionnent\u8232 correctement (comme dans bash).\u8232 - Si USER n'existe pas, d\'e9finissez-la.\u8232 - Ainsi, echo "$USER" devrait afficher la valeur de $USER.\u8232 \cf3 G\'e9rer les $ et double-quotes \cf2 \
+\f1\b0 \cf2 - Ex\'e9cutez echo avec des variables d'environnement ($variable) en argument.\uc0\u8232 - Assurez-vous que $ est interpr\'e9t\'e9 correctement.\u8232 - V\'e9rifiez que les guillemets autour des $variables fonctionnent\u8232 correctement (comme dans bash).\u8232 - Si USER n'existe pas, d\'e9finissez-la.\u8232 - Ainsi, echo "$USER" devrait afficher la valeur de $USER.\u8232 \
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 \'a0Yes\'a0\'a0No\
+\
+Dernier changements:\
+Change_input_fd (message erreur)\
+exec_utils (gestion du path)\
+minishell>h (gestion du path)\
+Controle correction\
+\
 \
 }

@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:36:43 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/26 16:19:53 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/07 19:23:05 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	change_input_fd(char **tab)
 			delete_case(tab, i);
 		}
 		if (fd == -1)
-			printf("erreur fichier non existant");
+			printf("bash: No such file or directory\n");
 		else
 			i++;
 	}

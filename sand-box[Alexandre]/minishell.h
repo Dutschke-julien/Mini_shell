@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/11/03 18:10:52 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:43:28 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void		print_env(char **envp, char *envp_name);
 
 // exec_utils
 char		*bin_dir_cat(t_core *mini);
+char		*get_var_path(t_core *mini);
 char		*get_path(t_core *mini);
 
 // exec

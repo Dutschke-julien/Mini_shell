@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:51:34 by averon            #+#    #+#             */
-/*   Updated: 2022/10/31 11:45:48 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/07 18:43:29 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,29 @@ char	*bin_dir_cat(t_core *mini)
 	return (mini->bin_dir);
 }
 
+char	*get_var_path(t_core *mini)
+{
+	int		i;
+	char	*path;
+
+	path = NULL;
+	i = 0;
+	while (mini->envp[i] && ft_strncmp(mini->envp[i], "PATH=", 5) != 0)
+		i++;
+	if (mini->envp[i])
+		path = ft_strdup(&mini->envp[i][5]);
+	else
+		printf("bash: %s: No such file or directory\n", mini->tab_tok[0]);
+	return (path);
+}
+
 char	*get_path(t_core *mini)
 {
 	int		j;
 	char	*path;
 
+	path = get_var_path(mini);
 	j = 0;
-	path = ft_strdup(getenv("PATH"));
 	if (mini->tab_tok[0][0] != '/' && strncmp(mini->tab_tok[0], "./", 2) != 0)
 	{
 		while (mini->tab_tok[0][j])
