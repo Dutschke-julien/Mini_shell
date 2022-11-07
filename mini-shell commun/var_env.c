@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 12:52:36 by averon            #+#    #+#             */
-/*   Updated: 2022/11/04 15:17:33 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/07 14:57:45 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	is_in_env(char **envp, char *str)
 	if (str)
 		while (str[len] != '=' && str[len] != 0)
 			len++;
+	if (str[0] == '\0')
+		return (1);
 	while (envp[i])
 	{
 		if (!ft_strncmp(envp[i], str, len) && envp[i][len] == '=')

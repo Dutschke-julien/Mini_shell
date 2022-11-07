@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/04 17:36:40 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/07 15:35:44 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	input_split(t_core *mini)
 	define_tab_tokens(tab_of_tokens);
 	mini->fd_input = change_input_fd(tab_of_tokens);
 	mini->fd_output = change_output_fd(tab_of_tokens);
-	check_str_token(tab_of_tokens, 0);
+	check_str_token(tab_of_tokens, mini->envp);
 	reset_token(tab_of_tokens);
 	mini->input = recreate_input(tab_of_tokens);
 	mini->cmd = ft_split(mini->input, '|');
@@ -47,11 +47,19 @@ void	input_split(t_core *mini)
 void	reset_token(char **tab)
 {
 	int	i;
+	int	j;
 
+	j = 0;
 	i = 0;
 	while (tab[i])
 	{
-		tab[i][ft_strlen(tab[i]) - 1] = '\0';
+		j = ft_strlen(tab[i]);
+		while (ft_isdigit(tab[i][j]) == 0 && j != 0)
+		{
+			tab[i][j] = '\0';
+			j--;
+		}
+		tab[i][j] = '\0';
 		i++;
 	}
 }

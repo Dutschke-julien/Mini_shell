@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_input.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:21:15 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/11/04 14:54:15 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/07 15:08:40 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	change_spc(char *str, char first, char second)
 		{
 			if (str[i] == ' ')
 				str[i] = 4;
+			if (str[i] == '|')
+				str[i] = '5';
 			i++;
 		}
 		i++;

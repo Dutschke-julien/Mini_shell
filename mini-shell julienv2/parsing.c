@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/03 18:02:41 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:47:45 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	input_split(t_core *mini)
 	mini->fd_output = change_output_fd(tab_of_tokens);
 	check_str_token(tab_of_tokens, mini->envp);
 	reset_token(tab_of_tokens);
-	//mini->input = recreate_input(tab_of_tokens);
-	//mini->cmd = ft_split(mini->input, '|');
-	//mini->nb_pipe = pipe_calc(mini->cmd);
+	mini->input = recreate_input(tab_of_tokens);
+	mini->cmd = ft_split(mini->input, '|');
+	mini->nb_pipe = pipe_calc(mini->cmd);
 }
 
 void	reset_token(char **tab)
