@@ -6,11 +6,12 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:11:43 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/24 18:11:59 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:59:50 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_strcpy(char *dest, char *src)
 {

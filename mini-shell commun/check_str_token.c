@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/07 14:59:07 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:17:06 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	check_str_token(char **tab, char **env)
 	i = 0;
 	while (tab[i])
 	{
+		if (tab[i][ft_strlen(tab[i]) - 1] == '7')
+			replace_cote(tab[i]);
 		if (tab[i][ft_strlen(tab[i]) - 1] == '5')
 			tab[i] = transforming_into_six(tab[i]);
 		if (tab[i][ft_strlen(tab[i]) - 1] == '6')

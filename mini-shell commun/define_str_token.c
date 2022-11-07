@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:07:29 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/10/24 18:30:28 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:58:00 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*define_str_token(char *str)
 {
 	char	*s1;
 
-	s1 = malloc(ft_strlen(str) + 1);
+	s1 = ft_calloc(ft_strlen(str) + 1, 1);
 	s1 = ft_strcpy(s1, str);
 	if (s1[0] == '<' && s1[1] == '<')
 	{
@@ -41,7 +41,7 @@ char	*define_str_token2(char *str)
 {
 	char	*s1;
 
-	s1 = malloc(ft_strlen(str) + 1);
+	s1 = ft_calloc(ft_strlen(str) + 1, 1);
 	s1 = ft_strcpy(s1, str);
 	if (s1[0] == '>' && s1[1] == '>')
 	{
@@ -66,7 +66,7 @@ char	*define_str_token3(char *str)
 {
 	char	*s1;
 
-	s1 = malloc(ft_strlen(str) + 1);
+	s1 = ft_calloc(ft_strlen(str) + 1, 1);
 	s1 = ft_strcpy(s1, str);
 	if (s1[0] == 39)
 	{
@@ -91,14 +91,12 @@ char	*define_str_token4(char *str)
 {
 	char	*s1;
 
-	s1 = malloc(ft_strlen(str) + 1);
-	s1 = ft_strcpy(s1, str);
+	s1 = ft_strdup(str);
+	if (!s1)
+		return (NULL);
 	if (s1[0] != 39 && s1[0] != '<' && s1[0] != '>' && s1[0] != '"'
 		&& s1[0] != '$' && s1[0] != '|')
-	{
-		s1[ft_strlen(s1) + 1] = '\0';
-		s1[ft_strlen(s1)] = '0';
-	}
+		s1 = ft_strjoin(s1, "0");
 	free(str);
 	return (s1);
 }
@@ -115,5 +113,3 @@ void	change_pipe_in_str(char *str)
 		i++;
 	}
 }
-
-
