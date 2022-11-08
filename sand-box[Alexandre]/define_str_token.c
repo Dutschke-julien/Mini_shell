@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_str_token.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:07:29 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/11/07 17:58:00 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/08 18:19:40 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*define_str_token(char *str)
 {
 	char	*s1;
 
-	s1 = ft_calloc(ft_strlen(str) + 1, 1);
+	s1 = ft_calloc(ft_strlen(str) + 2, 1);
 	s1 = ft_strcpy(s1, str);
 	if (s1[0] == '<' && s1[1] == '<')
 	{
@@ -41,7 +41,7 @@ char	*define_str_token2(char *str)
 {
 	char	*s1;
 
-	s1 = ft_calloc(ft_strlen(str) + 1, 1);
+	s1 = ft_calloc(ft_strlen(str) + 2, 1);
 	s1 = ft_strcpy(s1, str);
 	if (s1[0] == '>' && s1[1] == '>')
 	{
@@ -66,7 +66,7 @@ char	*define_str_token3(char *str)
 {
 	char	*s1;
 
-	s1 = ft_calloc(ft_strlen(str) + 1, 1);
+	s1 = ft_calloc(ft_strlen(str) + 2, 1);
 	s1 = ft_strcpy(s1, str);
 	if (s1[0] == 39)
 	{

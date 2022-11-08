@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/11/04 16:23:01 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/08 19:08:21 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	exec_cmd_pipex(t_core *mini, int i)
 
 int	exec_builtins_no_fork(t_core *mini)
 {
+	place_space_in_tab(mini->tab_tok);
 	if (ft_strcmp(mini->tab_tok[0], "cd") == 0)
 		return (exec_cd(mini));
 	else if (ft_strcmp(mini->tab_tok[0], "unset") == 0)
@@ -62,6 +63,7 @@ int	exec_builtins_no_fork(t_core *mini)
 
 int	exec_builtins_fork(t_core *mini)
 {
+	place_space_in_tab(mini->tab_tok);
 	if (ft_strcmp(mini->tab_tok[0], "env") == 0)
 		return (exec_env(mini));
 	else if (ft_strcmp(mini->tab_tok[0], "echo") == 0)

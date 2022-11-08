@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+         #
+#    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/11/04 14:55:16 by averon           ###   ########.fr        #
+#    Updated: 2022/11/08 14:36:59 by jdutschk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRCS = 	minishell.c					\
 		recreate_input.c			\
 		replace_all_symbol.c 		\
 		replace_str_tab.c			\
-		update_input.c				
+		update_input.c				\
+		place_space_in_tab.c 		
 		
 
 OBJS = $(SRCS:.c=.o)

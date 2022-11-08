@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:51:34 by averon            #+#    #+#             */
-/*   Updated: 2022/11/07 18:43:29 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/08 15:21:28 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 char	*bin_dir_cat(t_core *mini)
 {
-	int	i;
+	int		i;
+	char	*temp;
 
 	i = 0;
-	while (mini->path_tab[i] && access(mini->bin_dir, F_OK) != 0)
+	while (mini->path_tab[i])
 	{
-		mini->bin_dir = malloc(sizeof(char)
-				* (ft_strlen(mini->path_tab[i]) + 1
-					+ ft_strlen(mini->tab_tok[0]) + 1));
-		if (mini->bin_dir == NULL)
+		temp = ft_strjoin(mini->path_tab[i], "/");
+		mini->bin_dir = ft_strjoin(temp, mini->tab_tok[0]);
+		free(temp);
+		if (access(mini->bin_dir, F_OK) == 0)
 			break ;
-		strcat(mini->bin_dir, mini->path_tab[i]);
-		strcat(mini->bin_dir, "/");
-		strcat(mini->bin_dir, mini->tab_tok[0]);
-		i++;
+		else
+			i++;
 	}
 	return (mini->bin_dir);
 }

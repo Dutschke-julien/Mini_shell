@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:11:39 by averon            #+#    #+#             */
-/*   Updated: 2022/11/01 18:42:35 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/08 19:02:00 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	update_oldpwd(char **envp, char *temp_pwd)
 	if (envp[i])
 	{
 		free(envp[i]);
-		envp[i] = ft_strjoin("OLDPWD=", ft_strdup(temp_pwd));
+		envp[i] = ft_strjoin("OLDPWD=", temp_pwd);
 		free(temp_pwd);
 	}
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/11/07 18:43:28 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/08 14:37:30 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,14 @@ typedef struct s_core
 	int			fd_output;			
 }t_core;
 
+//place_space_in_tab.c
+void		place_space_in_tab(char **tab);
+
 //[parsing]
 void		reset_token(char **tab);
 void		define_tab_tokens(char **tab);
 void		replace_cote(char *str);
+void		replace_s_cote(char *str, int indicator);
 
 //recreate_input
 int			all_strlen(char **tab);

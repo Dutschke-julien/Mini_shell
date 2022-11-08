@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_input.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:21:15 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/11/07 15:08:40 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:42:15 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*update_input(char *str, int i, int j)
 		}
 	}
 	s1[j] = '\0';
-	//add free(str)
+	free(str);
 	return (s1);
 }
 
@@ -49,7 +49,8 @@ void	change_spc(char *str, char first, char second)
 	{
 		while (str[i] != first && str[i])
 			i++;
-		i++;
+		if (str[i])
+			i++;
 		while (str[i] != second && str[i])
 		{
 			if (str[i] == ' ')
@@ -58,7 +59,8 @@ void	change_spc(char *str, char first, char second)
 				str[i] = '5';
 			i++;
 		}
-		i++;
+		if (str[i])
+			i++;
 	}
 }
 
@@ -85,7 +87,7 @@ char	*cmd_with_space(char *str, int i, int j)
 		}
 	}
 	s1[j] = '\0';
-	//add free(str)
+	free(str);
 	return (s1);
 }
 
