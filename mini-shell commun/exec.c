@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/11/04 16:23:01 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/08 15:25:50 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 void	launch_exec(t_core *mini, int i)
 {
 	input_split(mini);
+	while(mini->cmd[i])
+	{
+		printf("%s\n", mini->cmd[i]);
+		i++;
+	}
+
+	i = 0;
 	if (mini->cmd[0])
 	{	
 		mini->tab_tok = ft_split(mini->cmd[i], ' ');

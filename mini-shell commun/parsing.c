@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/07 16:11:52 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:20:34 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,26 @@ void	replace_cote(char *str)
 		if (str[i] == '"' || str[i] == 39)
 			str[i] = ' ';
 		i++;
-	}	
+	}
+}
+
+void	replace_s_cote(char *str, int indicator)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && indicator == 0)
+	{
+		if (str[i] == '"' || str[i] == 39)
+			str[i] = ' ';
+		else if (str[i] == ' ')
+			str[i] = 4;
+		i++;
+	}
+	while (str[i] && indicator == 1)
+	{
+		if (str[i] == ' ')
+			str[i] = 4;
+		i++;
+	}
 }

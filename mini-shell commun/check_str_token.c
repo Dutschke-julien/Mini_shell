@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/07 17:17:06 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:49:50 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_str_token(char **tab, char **env)
 	while (tab[i])
 	{
 		if (tab[i][ft_strlen(tab[i]) - 1] == '7')
-			replace_cote(tab[i]);
+			replace_s_cote(tab[i], 0);
 		if (tab[i][ft_strlen(tab[i]) - 1] == '5')
 			tab[i] = transforming_into_six(tab[i]);
 		if (tab[i][ft_strlen(tab[i]) - 1] == '6')
@@ -38,7 +38,7 @@ char	*change_dollar_in_str(char *str, char **env, int cmpt_space)
 
 	i = 0;
 	i_tab = 0;
-	data_space = ft_calloc(25, sizeof(int));
+	data_space = ft_calloc(50, sizeof(int));
 	while (str[i])
 	{
 		cmpt_space = 0;
@@ -80,6 +80,7 @@ char	*transform_str_dollar(char **tab, int *space_data, char **env)
 		i++;
 	}
 	s1 = transform_str_dollar2(tab, space_data);
+	replace_s_cote(s1, 1);
 	return (s1);
 }
 
