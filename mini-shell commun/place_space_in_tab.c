@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:35:53 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/11/08 14:39:22 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/09 14:23:52 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	place_space_in_tab(char **tab)
 		{
 			if (tab[i][j] == 4)
 				tab[i][j] = ' ';
+			if (tab[i][j] == 5)
+				tab[i][j] = '|';
+			if (tab[i][j] == 6)
+				tab[i][j] = '<';
+			if (tab[i][j] == 7)
+				tab[i][j] = '>';
 			j++;
 		}
 		j = 0;
