@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/08 14:49:50 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:21:29 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ char	*replace_str_by_env(char *str, char **env)
 		s1[0] = '$';
 		s1[1] = '\0';
 	}
+	else if (!ft_strcmp(str, "$?"))
+		s1 = ft_itoa(g_exit_status);
 	else
 		s1 = ft_strdup(getenv(&str[1]));
 	free(str);

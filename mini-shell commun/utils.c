@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
+/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:37:54 by averon            #+#    #+#             */
-/*   Updated: 2022/11/02 15:03:22 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/09 15:11:44 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_strcmp(char *s1, char *s2)
 	int	i;	
 
 	i = 0;
+	if (!s1 || !s2)
+		return (-1);
 	while (s1[i] && s2[i] && (s1[i] == s2[i]))
 	{
 		i++;
