@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/10 13:32:36 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:56:57 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	input_split(t_core *mini)
 	working_input = update_input(mini->input, 0, 0);
 	replace_all_symbol(working_input);
 	tab_of_tokens = ft_split(working_input, ' ');
+	free(working_input);
 	replace_str_space_tab(tab_of_tokens);
 	define_tab_tokens(tab_of_tokens);
 	mini->fd_input = change_input_fd(tab_of_tokens);

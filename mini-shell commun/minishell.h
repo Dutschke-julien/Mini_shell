@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/11/10 13:29:11 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:57:52 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void		replace_s_cote(char *str, int indicator);
 //recreate_input
 int			all_strlen(char **tab);
 char		*recreate_input(char **tab);
+char		*ft_strjoin_free(char const *s1, char const *s2);
 
 //check_str_token[1..2]
 void		check_str_token(char **tab, char **env);

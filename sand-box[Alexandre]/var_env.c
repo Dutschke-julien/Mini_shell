@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 12:52:36 by averon            #+#    #+#             */
-/*   Updated: 2022/11/07 14:57:45 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:20:11 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	is_in_env(char **envp, char *str)
 		while (str[len] != '=' && str[len] != 0)
 			len++;
 	if (str[0] == '\0')
+		return (1);
+	if (str[0] == '?' && str[1] == '\0')
 		return (1);
 	while (envp[i])
 	{

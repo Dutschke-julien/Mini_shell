@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/08 15:20:34 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:56:57 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ void	input_split(t_core *mini)
 	char	**tab_of_tokens;
 	char	*working_input;
 
+	change_spc(mini->input, '"', '"');
+	change_spc(mini->input, 39, 39);
+	change_spc2(mini->input, 39, 39);
 	working_input = update_input(mini->input, 0, 0);
 	replace_all_symbol(working_input);
-	change_spc(working_input, '"', '"');
-	change_spc(working_input, 39, 39);
 	tab_of_tokens = ft_split(working_input, ' ');
+	free(working_input);
 	replace_str_space_tab(tab_of_tokens);
 	define_tab_tokens(tab_of_tokens);
 	mini->fd_input = change_input_fd(tab_of_tokens);

@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:07:29 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/11/08 18:19:40 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/10 13:59:22 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,22 @@ char	*define_str_token3(char *str)
 char	*define_str_token4(char *str)
 {
 	char	*s1;
+	char	*temp;
 
-	s1 = ft_strdup(str);
-	if (!s1)
+	s1 = NULL;
+	temp = ft_strdup(str);
+	if (!temp)
+	{	
+		free(str);
 		return (NULL);
-	if (s1[0] != 39 && s1[0] != '<' && s1[0] != '>' && s1[0] != '"'
-		&& s1[0] != '$' && s1[0] != '|')
-		s1 = ft_strjoin(s1, "0");
+	}
+	if (temp[0] != 39 && temp[0] != '<' && temp[0] != '>' && temp[0] != '"'
+		&& temp[0] != '$' && temp[0] != '|')
+		s1 = ft_strjoin(temp, "0");
+	else
+		s1 = ft_strdup(temp);
 	free(str);
+	free(temp);
 	return (s1);
 }
 
