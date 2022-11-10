@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/09 14:18:03 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:32:36 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	input_split(t_core *mini)
 
 	change_spc(mini->input, '"', '"');
 	change_spc(mini->input, 39, 39);
+	change_spc2(mini->input, 39, 39);
 	working_input = update_input(mini->input, 0, 0);
 	replace_all_symbol(working_input);
 	tab_of_tokens = ft_split(working_input, ' ');

@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/11/08 18:00:04 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:32:16 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,26 @@ void	free_minishell(t_core *mini)
 	if (mini)
 		free(mini);
 	rl_clear_history();
+}
+
+void	change_spc2(char *str, char first, char second)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		while (str[i] != first && str[i])
+			i++;
+		if (str[i])
+			i++;
+		while (str[i] != second && str[i])
+		{
+			if (str[i] == '$')
+				str[i] = 8;
+			i++;
+		}
+		if (str[i])
+			i++;
+	}
 }

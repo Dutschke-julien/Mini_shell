@@ -6,7 +6,7 @@
 /*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/11/08 14:37:30 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:29:11 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ char		*replace_str_by_env(char *str, char **env);
 //update_input
 char		*update_input(char *str, int i, int j);
 void		change_spc(char *str, char first, char second);
+void		change_spc2(char *str, char first, char second);
 
 //define_str_token
 char		*define_str_token(char *str);
