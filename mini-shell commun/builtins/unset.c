@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:30:25 by averon            #+#    #+#             */
-/*   Updated: 2022/11/02 14:28:30 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/11 15:41:21 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	exec_unset(t_core *mini)
 		new_envp_unset(mini, j);
 		x++;
 	}
+	g_exit_status = 0;
 	return (0);
 }
 

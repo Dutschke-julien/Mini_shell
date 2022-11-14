@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 12:22:35 by averon            #+#    #+#             */
-/*   Updated: 2022/10/28 16:10:03 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/11 13:39:41 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	pipex(t_core *mini)
 			ft_child_process(mini, i);
 		}
 		else
-			ft_parent_process(mini->tube, &mini->fd_input);
+			ft_parent_process(mini->tube, &mini->fd_input, pid);
 		i++;
 	}
 }
@@ -47,9 +47,16 @@ void	ft_child_process(t_core *mini, int i)
 	exec_cmd_pipex(mini, i);
 }
 
-void	ft_parent_process(int *tube, int *fd)
+void	ft_parent_process(int *tube, int *fd, pid_t pid)
 {
 	close(tube[1]);
 	*fd = tube[0];
-	wait(NULL);
+	waitpid(pid, &g_exit_status, WUNTRACED);
+	status_child();
+}
+
+void	status_child(void)
+{
+	if (WIFEXITED(g_exit_status))
+		g_exit_status = WEXITSTATUS(g_exit_status);
 }

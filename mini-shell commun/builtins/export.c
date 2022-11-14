@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:08:24 by averon            #+#    #+#             */
-/*   Updated: 2022/11/02 13:43:17 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/10 16:35:35 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	exec_export(t_core *mini)
 {
+	g_exit_status = 0;
 	if (mini->tab_tok[0] && !mini->tab_tok[1])
 	{
 		env_sort(mini->envp);

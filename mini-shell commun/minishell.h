@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/11/10 13:57:52 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/13 16:04:39 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_core
 	char		*input;
 	char		**cmd;
 	char		**tab_tok;
+	char		*bin_no_path;
 	int			tube[2];
 	int			nb_pipe;
 	char		*bin_dir;
@@ -144,7 +145,8 @@ int			heredoc_loop(char *limiter, int fd);
 // pipex
 void		pipex(t_core *mini);
 void		ft_child_process(t_core *mini, int i);
-void		ft_parent_process(int *tube, int *fd);
+void		ft_parent_process(int *tube, int *fd, pid_t pid);
+void		status_child(void);
 
 // var_env
 int			nbvar_env(char **env);
@@ -156,10 +158,12 @@ void		print_env(char **envp, char *envp_name);
 char		*bin_dir_cat(t_core *mini);
 char		*get_var_path(t_core *mini);
 char		*get_path(t_core *mini);
+//int			check_path(char *str);
 
 // exec
 void		launch_exec(t_core *mini, int i);
 void		exec_cmd_pipex(t_core *mini, int i);
+void		execve_message(t_core *mini);
 int			exec_builtins_no_fork(t_core *mini);
 int			exec_builtins_fork(t_core *mini);
 
@@ -168,7 +172,6 @@ void		signals_run(int sig);
 void		restore_prompt(int sig);
 void		ctrl_c(int sig);
 void		back_slash(int sig);
-void		sig_hd_handler(int signal);
 
 //BUILTINS
 // cd1

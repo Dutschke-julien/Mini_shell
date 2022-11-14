@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:11:39 by averon            #+#    #+#             */
-/*   Updated: 2022/11/08 19:02:00 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/13 16:01:03 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ char	*save_pwd(char **envp)
 		i++;
 	if (envp[i])
 		temp_pwd = ft_strdup(&envp[i][4]);
-	else
-		printf("no working directory !?");
 	return (temp_pwd);
 }
 

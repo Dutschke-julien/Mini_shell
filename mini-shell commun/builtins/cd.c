@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:33:45 by averon            #+#    #+#             */
-/*   Updated: 2022/11/01 18:41:40 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/13 18:38:10 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	exec_cd(t_core *mini)
 		|| (strcmp(mini->tab_tok[1], "~") == 0 && mini->tab_tok[2] == 0))
 	{	
 		get_home(mini->envp);
-		update_oldpwd(mini->envp, temp_pwd);
+		if (temp_pwd)
+			update_oldpwd(mini->envp, temp_pwd);
 		update_pwd(mini->envp);
 	}
 	else if (ft_strcmp(mini->tab_tok[1], ".") == 0)
@@ -40,14 +41,19 @@ int	exec_cd2(t_core *mini, char *temp_pwd)
 	if (ft_strcmp(mini->tab_tok[1], "..") == 0)
 	{
 		get_upper_dir(mini->envp);
-		update_oldpwd(mini->envp, temp_pwd);
+		if (temp_pwd)
+			update_oldpwd(mini->envp, temp_pwd);
 		update_pwd(mini->envp);
 	}
 	else if (mini->tab_tok[1])
 	{	
 		if ((chdir(mini->tab_tok[1]) == -1))
-			printf("cd: no such file or directory: %s\n", mini->tab_tok[1]);
-		update_oldpwd(mini->envp, temp_pwd);
+		{
+			printf("cd: %s: no such file or directory\n", mini->tab_tok[1]);
+			g_exit_status = 1;
+		}
+		if (temp_pwd)
+			update_oldpwd(mini->envp, temp_pwd);
 		update_pwd(mini->envp);
 	}
 	return (0);

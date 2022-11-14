@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/11/10 13:32:16 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/13 18:33:30 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	main(int argc, char **argv, char **env)
 		mini->input = readline("minishell> ");
 		add_history(mini->input);
 		if (!mini->input || mini->input[0] == '\04')
+		{	
+			g_exit_status = 0;
 			exit_mini(mini);
+		}
 		if (mini->input)
 			launch_exec(mini, i);
 		free(mini->input);
@@ -40,7 +43,7 @@ void	exit_mini(t_core *mini)
 {
 	ft_putendl_fd("exit", 1);
 	free_minishell(mini);
-	exit(0);
+	exit(g_exit_status);
 }
 
 void	free_minishell(t_core *mini)
@@ -49,10 +52,10 @@ void	free_minishell(t_core *mini)
 		ft_free(mini->envp);
 	if (mini->cmd)
 		ft_free(mini->cmd);
-	if (mini->tab_tok)
-		ft_free(mini->tab_tok);
-	if (mini->path_tab)
-		ft_free(mini->path_tab);
+	/*if (mini->tab_tok)
+		ft_free(mini->tab_tok);*/
+	/*if (mini->path_tab)
+		ft_free(mini->path_tab);*/
 	if (mini)
 		free(mini);
 	rl_clear_history();

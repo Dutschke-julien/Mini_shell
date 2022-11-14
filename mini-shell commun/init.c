@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:38:11 by averon            #+#    #+#             */
-/*   Updated: 2022/10/28 16:08:37 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/13 15:15:01 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_struct_var(t_core *mini, char **env)
 	mini->fd_input = 0;
 	mini->fd_output = 1;
 	mini->cmd = NULL;
+	mini->bin_no_path = NULL;
 	mini->nb_pipe = 0;
 	mini->tab_tok = NULL;
 	mini->bin_dir = NULL;

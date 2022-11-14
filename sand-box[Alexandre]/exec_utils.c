@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:51:34 by averon            #+#    #+#             */
-/*   Updated: 2022/11/08 15:21:28 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/13 15:02:26 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*get_var_path(t_core *mini)
 	if (mini->envp[i])
 		path = ft_strdup(&mini->envp[i][5]);
 	else
-		printf("bash: %s: No such file or directory\n", mini->tab_tok[0]);
+		return (NULL);
 	return (path);
 }
 
@@ -53,6 +53,8 @@ char	*get_path(t_core *mini)
 	char	*path;
 
 	path = get_var_path(mini);
+	if (path == NULL)
+		return (NULL);
 	j = 0;
 	if (mini->tab_tok[0][0] != '/' && strncmp(mini->tab_tok[0], "./", 2) != 0)
 	{
@@ -71,3 +73,13 @@ char	*get_path(t_core *mini)
 		free(path);
 	return (mini->tab_tok[0]);
 }
+
+/*int	check_path(char *str)
+{
+	if (str == NULL)
+	{	
+		free(str);
+		return (0);
+	}
+	return (1);
+}*/

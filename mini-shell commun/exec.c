@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/11/09 15:05:53 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/14 09:00:04 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,48 @@ void	launch_exec(t_core *mini, int i)
 		if (!exec_builtins_no_fork(mini))
 			ft_free(mini->tab_tok);
 		else
+		{
 			pipex(mini);
+			if (g_exit_status == 2 || g_exit_status == 3)
+				g_exit_status = g_exit_status + 128;
+		}
 	}
 }
 
 void	exec_cmd_pipex(t_core *mini, int i)
 {
-	char	*str;
-
-	str = NULL;
 	mini->tab_tok = ft_split(mini->cmd[i], ' ');
 	if (exec_builtins_fork(mini) == 1)
 	{
-		str = ft_strdup(mini->tab_tok[0]);
-		get_path(mini);
-		if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
-		{	
-			str = ft_strjoin("Bash: ", str);
-			perror(str);
+		mini->bin_no_path = ft_strdup(mini->tab_tok[0]);
+		if (get_path(mini) == NULL)
+		{
+			printf("Bash: %s: no such file or directory\n", mini->bin_no_path);
+			g_exit_status = 127;
 		}
+		else if (access(mini->tab_tok[0], F_OK) == -1
+			&& mini->bin_no_path[0] != '/'
+			&& strncmp(mini->bin_no_path, "./", 2) != 0
+			&& ft_strchr(&mini->bin_no_path[1], '/') == NULL)
+		{	
+			g_exit_status = 127;
+			printf("Bash: %s: command not found\n", mini->bin_no_path);
+		}
+		else if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
+			execve_message(mini);
 	}
-	free(str);
 	ft_free(mini->tab_tok);
-	exit(0);
+	exit(g_exit_status);
+}
+
+void	execve_message(t_core *mini)
+{
+	mini->bin_no_path = ft_strjoin("Bash: ", mini->bin_no_path);
+	perror(mini->bin_no_path);
+	if (errno == 20 || errno == 13)
+		g_exit_status = 126;
+	else
+		g_exit_status = 127;
 }
 
 int	exec_builtins_no_fork(t_core *mini)

@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 17:16:45 by averon            #+#    #+#             */
-/*   Updated: 2022/10/12 17:54:48 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/11 10:36:22 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	exec_env(t_core *mini)
 		ft_printf("%s\n", mini->envp[i]);
 		i++;
 	}
+	g_exit_status = 0;
 	return (0);
 }
 

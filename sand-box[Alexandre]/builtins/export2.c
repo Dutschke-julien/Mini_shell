@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 16:29:51 by averon            #+#    #+#             */
-/*   Updated: 2022/11/02 13:43:19 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/10 16:35:37 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	export_error(char *str)
 	ft_putstr_fd("minishell: export: ", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd(": not a valid identifier\n", 2);
+	g_exit_status = 1;
 }
 
 void	env_sort(char **envp)

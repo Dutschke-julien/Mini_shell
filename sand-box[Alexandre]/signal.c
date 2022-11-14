@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 12:06:17 by averon            #+#    #+#             */
-/*   Updated: 2022/11/01 18:49:01 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/11 14:42:43 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	signals_run(int sig)
 
 void	restore_prompt(int sig)
 {
-	g_exit_status = 130;
+	g_exit_status = 1;
 	write(1, "\n", 1);
 	rl_replace_line("", 0);
 	rl_on_new_line();
@@ -45,7 +45,6 @@ void	ctrl_c(int sig)
 
 void	back_slash(int sig)
 {
-	g_exit_status = 131;
 	printf("Quit: 3\n");
 	(void)sig;
 }
