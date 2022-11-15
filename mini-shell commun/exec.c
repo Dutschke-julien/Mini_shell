@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/11/14 09:00:04 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/15 15:12:10 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	exec_cmd_pipex(t_core *mini, int i)
 			g_exit_status = 127;
 			printf("Bash: %s: command not found\n", mini->bin_no_path);
 		}
-		else if (execve(mini->tab_tok[0], mini->tab_tok, NULL) == -1)
+		else if (execve(mini->tab_tok[0], mini->tab_tok, mini->envp) == -1)
 			execve_message(mini);
 	}
 	ft_free(mini->tab_tok);

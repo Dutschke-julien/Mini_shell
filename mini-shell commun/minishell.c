@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/11/13 18:33:30 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/15 14:53:02 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	free_minishell(t_core *mini)
 		ft_free(mini->envp);
 	if (mini->cmd)
 		ft_free(mini->cmd);
-	/*if (mini->tab_tok)
-		ft_free(mini->tab_tok);*/
-	/*if (mini->path_tab)
-		ft_free(mini->path_tab);*/
+	if (mini->tab_tok)
+		ft_free(mini->tab_tok);
+	if (mini->path_tab)
+		ft_free(mini->path_tab);
 	if (mini)
 		free(mini);
 	rl_clear_history();
