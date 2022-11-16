@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   check_str_token.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/09 15:21:29 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/15 18:48:45 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+​
 #include "minishell.h"
-
+​
 void	check_str_token(char **tab, char **env)
 {
 	int	i;
-
+​
 	i = 0;
 	while (tab[i])
 	{
@@ -28,14 +28,14 @@ void	check_str_token(char **tab, char **env)
 		i++;
 	}
 }
-
+​
 /*															*/
 char	*change_dollar_in_str(char *str, char **env, int cmpt_space)
 {
 	int	i;
 	int	i_tab;
 	int	*data_space;
-
+​
 	i = 0;
 	i_tab = 0;
 	data_space = ft_calloc(50, sizeof(int));
@@ -58,12 +58,12 @@ char	*change_dollar_in_str(char *str, char **env, int cmpt_space)
 	str = transform_str_dollar(ft_split(str, ' '), data_space, env);
 	return (str);
 }
-
+​
 char	*transform_str_dollar(char **tab, int *space_data, char **env)
 {
 	char	*s1;
 	int		i;
-
+​
 	i = 0;
 	while (tab[i])
 	{
@@ -83,12 +83,14 @@ char	*transform_str_dollar(char **tab, int *space_data, char **env)
 	replace_s_cote(s1, 1);
 	return (s1);
 }
-
+​
 char	*replace_str_by_env(char *str, char **env)
 {
 	char	*s1;
-
-	(void)env;
+	int		i;
+	int		len;
+​
+	i = 0;
 	if (ft_strlen(str) == 1)
 	{
 		s1 = malloc(2);
@@ -98,16 +100,21 @@ char	*replace_str_by_env(char *str, char **env)
 	else if (!ft_strcmp(str, "$?"))
 		s1 = ft_itoa(g_exit_status);
 	else
-		s1 = ft_strdup(getenv(&str[1]));
+	{
+		len = ft_strlen(&str[1]);
+		while (env[i] && ft_strnstr(env[i], &str[1], len) == 0)
+			i++;
+		s1 = ft_strdup(&env[i][len + 1]);
+	}
 	free(str);
 	return (s1);
 }
-
+​
 char	*transforming_into_six(char *str)
 {
 	int		i;	
 	char	*s1;
-
+​
 	s1 = ft_calloc(1, (ft_strlen(str) + 5));
 	i = 0;
 	s1[0] = '"';
