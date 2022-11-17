@@ -6,7 +6,7 @@
 #    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/11/08 14:36:59 by jdutschk         ###   ########.fr        #
+#    Updated: 2022/11/16 21:01:01 by jdutschk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,12 +56,12 @@ RM = rm -f
 all :		$(NAME)
 
 .c.o:
-			$(CC) $(CFLAGS) -I $(HEADERS) -I$(HOME)/.brew/opt/readline/include -c $< -o $(<:.c=.o)
+			$(CC) $(CFLAGS) -I $(HEADERS) -I /Users/jdutschk/goinfre/.brew/opt/readline/include -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS)
 			make -C libft
 			mv libft/libft.a .
-			$(CC) $(CFLAGS) $(OBJS) libft.a -lreadline -L/$(HOME)/.brew/opt/readline/lib -o $(NAME) 
+			$(CC) $(CFLAGS) $(OBJS) libft.a -lreadline -L /Users/jdutschk/goinfre/.brew/opt/readline/lib -o $(NAME) 
  
 clean :
 			$(RM) $(OBJS)
