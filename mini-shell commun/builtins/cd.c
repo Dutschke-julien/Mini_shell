@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:33:45 by averon            #+#    #+#             */
-/*   Updated: 2022/11/13 18:38:10 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/16 21:37:33 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ void	get_home(char **envp)
 	if (envp[i])
 		chdir(&envp[i][5]);
 	else
-		printf("no home directory !?");
+		printf("bash: HOME not set\n");
 }

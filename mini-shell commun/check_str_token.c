@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:51:06 by averon            #+#    #+#             */
-/*   Updated: 2022/11/17 03:02:15 by jdutschk         ###   ########.fr       */
+/*   Updated: 2022/11/18 10:40:59 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ char	*replace_str_by_env(char *str, char **env)
 	}
 	else if (!ft_strcmp(str, "$?"))
 		s1 = ft_itoa(g_exit_status);
-	}
 	else
 	{
 		len = ft_strlen(&str[1]);

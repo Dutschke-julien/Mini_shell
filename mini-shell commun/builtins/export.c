@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:08:24 by averon            #+#    #+#             */
-/*   Updated: 2022/11/10 16:35:35 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/16 17:43:36 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	exec_export(t_core *mini)
 			export_change_value(mini->envp, mini->tab_tok[1]);
 	}
 	else
-		export_error(mini->tab_tok[1]);
+		g_exit_status = 0;
 	return (0);
 }
 

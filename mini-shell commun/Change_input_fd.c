@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:36:43 by jdutschk          #+#    #+#             */
-/*   Updated: 2022/11/07 19:23:05 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/16 18:35:53 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	change_input_fd(char **tab)
 			fd = open(&tab[i][1], O_RDONLY);
 			delete_case(tab, i);
 		}
-		else if (is_heredoc(tab[i]))
+		else if (is_heredoc(tab[i]) && check_heredoc_name(&tab[i][2]))
 		{
 			fd = heredoc(&tab[i][2]);
 			fd = open(&tab[i][2], O_RDONLY);

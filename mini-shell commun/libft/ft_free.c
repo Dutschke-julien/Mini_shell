@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:22:24 by averon            #+#    #+#             */
-/*   Updated: 2022/11/13 18:31:02 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/16 23:14:33 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void	ft_free(char **str)
 
 	i = 0;
 	while (str[i])
+	{	
+		free(str[i]);
 		i++;
-	while (i >= 0)
-		free(str[i--]);
+	}
 	free(str);
 }

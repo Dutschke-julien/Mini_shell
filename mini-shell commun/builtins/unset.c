@@ -6,54 +6,55 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:30:25 by averon            #+#    #+#             */
-/*   Updated: 2022/11/11 15:41:21 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/18 10:06:58 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// attention: unset fonctionne avec plusieurs variables
-
 int	exec_unset(t_core *mini)
 {
 	int	j;
-	int	x;
 	int	len;
 
 	j = 0;
-	x = 1;
-	while (mini->tab_tok[x])
+	while (mini->tab_tok[1])
 	{
-		if (!is_in_env(mini->envp, mini->tab_tok[x]))
+		if (!is_in_env(mini->envp, mini->tab_tok[1]))
 			return (0);
-		len = ft_strlen(mini->tab_tok[x]);
+		len = ft_strlen(mini->tab_tok[1]);
 		while (mini->envp[j]
-			&& ft_strnstr(mini->envp[j], mini->tab_tok[x], len) == 0)
+			&& ft_strnstr(mini->envp[j], mini->tab_tok[1], len) == 0)
 			j++;
 		if (mini->envp[j] != NULL)
-			mini->envp[j][0] = 0;
-		new_envp_unset(mini, j);
-		x++;
+			mini->envp = realloc_envp_unset(mini, j);
 	}
 	g_exit_status = 0;
 	return (0);
 }
 
-char	**new_envp_unset(t_core *mini, int index)
+char	**realloc_envp_unset(t_core *mini, int index)
 {
-	char	*temp;
-	size_t	n;
+	char	**new;
+	int		size;
+	int		i;
 	int		j;
 
-	j = index;
-	n = nbvar_env(mini->envp);
-	while (mini->envp[j + 1])
+	size = nbvar_env(mini->envp);
+	new = (char **)malloc(sizeof(char *) * (size + 1));
+	if (new == NULL)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (mini->envp[i] && i < size && mini->envp[j])
 	{
-		temp = ft_strdup(mini->envp[j + 1]);
-		free (mini->envp[j]);
-		mini->envp[j] = temp;
+		if (i != index)
+			new[i] = ft_strdup(mini->envp[j]);
+		else
+			new[i] = ft_strdup(mini->envp[++j]);
+		i++;
 		j++;
 	}
-	mini->envp = realloc_envp_unset(mini, n - 1);
-	return (mini->envp);
+	ft_free(mini->envp);
+	return (new);
 }

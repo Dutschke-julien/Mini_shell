@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/11/15 14:42:20 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/18 10:23:41 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <errno.h>
-# include <string.h> // mettre strcat dans libft;
+# include <string.h>
 # include <unistd.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -60,12 +60,6 @@ typedef struct s_core
 //place_space_in_tab.c
 void		place_space_in_tab(char **tab);
 
-//[parsing]
-void		reset_token(char **tab);
-void		define_tab_tokens(char **tab);
-void		replace_cote(char *str);
-void		replace_s_cote(char *str, int indicator);
-
 //recreate_input
 int			all_strlen(char **tab);
 char		*recreate_input(char **tab);
@@ -83,7 +77,9 @@ char		*replace_str_by_env(char *str, char **env);
 //update_input
 char		*update_input(char *str, int i, int j);
 void		change_spc(char *str, char first, char second);
-void		change_spc2(char *str, char first, char second);
+char		*cmd_with_space(char *str, int i, int j);
+int			cmpt_this(char *str, char c);
+int			get_tokens(char *str);
 
 //define_str_token
 char		*define_str_token(char *str);
@@ -94,9 +90,6 @@ void		change_pipe_in_str(char *str);
 
 //change input+output
 int			change_input_fd(char **tab);
-char		*cmd_with_space(char *str, int i, int j);
-int			cmpt_this(char *str, char c);
-int			get_tokens(char *str);
 int			is_dir_in(char *str);
 int			is_heredoc(char *str);
 void		delete_case(char **tab, int local_case);
@@ -108,7 +101,6 @@ int			is_append(char *str);
 void		replace_str_space_tab(char **tab);
 void		replace_str_space(char *str);
 void		define_tab_tokens(char **tab);
-char		*define_str_token(char *str);
 
 //replace_all_symbol
 int			replace_all_symbol(char *str);
@@ -123,17 +115,23 @@ int			ft_strcmp(char *s1, char *s2);
 int			ft_isnumber(char *str);
 int			is_occurence(char c);
 
-//	minishel + init
+//	minishel
 void		exit_mini(t_core *mini);
 void		free_minishell(t_core *mini);
+void		change_spc2(char *str, char first, char second);
+
+// init
 void		init_struct_core(t_core **mini);
 void		init_struct_var(t_core *mini, char **env);
 
-// lexer + parser
-void		input_split(t_core *mini);
+// parsing
 int			pipe_calc(char **tab);
+void		input_split(t_core *mini);
+void		reset_token(char **tab);
+void		replace_cote(char *str);
+void		replace_s_cote(char *str, int indicator);
 
-//	expanse_dollar
+//expanse_dollar
 int			expanse_dollar(char **envp, char *str);
 char		*dollar_is_in_env(char **envp, char *str);
 
@@ -141,6 +139,7 @@ char		*dollar_is_in_env(char **envp, char *str);
 
 int			heredoc(char *name);
 int			heredoc_loop(char *limiter, int fd);
+int			check_heredoc_name(char *str);
 
 // pipex
 void		pipex(t_core *mini);
@@ -158,7 +157,6 @@ void		print_env(char **envp, char *envp_name);
 char		*bin_dir_cat(t_core *mini);
 char		*get_var_path(t_core *mini);
 char		*get_path(t_core *mini);
-//int			check_path(char *str);
 
 // exec
 void		launch_exec(t_core *mini, int i);
@@ -191,7 +189,6 @@ void		echo_print_option(t_core *mini, int j);
 
 // env
 int			exec_env(t_core *mini);
-char		**realloc_envp_unset(t_core *mini, size_t size);
 
 // exit
 int			exec_exit(t_core *mini);
@@ -207,7 +204,6 @@ char		**new_envp_export(t_core *mini, size_t size);
 
 // export2
 int			is_valid_var_name(char *str);
-void		export_error(char *str);
 void		env_sort(char **envp);
 
 // pwd
@@ -216,6 +212,6 @@ void		update_pwd(char **envp);
 
 // unset
 int			exec_unset(t_core *mini);
-char		**new_envp_unset(t_core *mini, int index);
+char		**realloc_envp_unset(t_core *mini, int index);
 
 #endif

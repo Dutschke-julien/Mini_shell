@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:08:53 by averon            #+#    #+#             */
-/*   Updated: 2022/10/28 13:48:39 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/16 21:27:16 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,27 @@ int	heredoc_loop(char *limiter, int fd)
 	}
 	free(limiter);
 	return (fd);
+}
+
+int	check_heredoc_name(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str[i])
+	{	
+		printf("bash: syntax error near unexpected token `newline'\n");
+		return (0);
+	}
+	while (str[i])
+	{
+		if (str[i] != ' ')
+			i++;
+		else
+		{
+			printf("bash: syntax error near unexpected token `newline'\n");
+			return (0);
+		}
+	}
+	return (1);
 }

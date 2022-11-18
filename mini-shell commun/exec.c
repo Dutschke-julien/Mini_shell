@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 16:47:40 by averon            #+#    #+#             */
-/*   Updated: 2022/11/15 15:12:10 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/18 10:06:06 by averon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	launch_exec(t_core *mini, int i)
 	{	
 		mini->tab_tok = ft_split(mini->cmd[i], ' ');
 		if (!exec_builtins_no_fork(mini))
-			ft_free(mini->tab_tok);
+			;
 		else
 		{
 			pipex(mini);
