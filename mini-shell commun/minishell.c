@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:13:45 by averon            #+#    #+#             */
-/*   Updated: 2022/11/18 10:11:08 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/22 13:56:25 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	main(int argc, char **argv, char **env)
 			g_exit_status = 0;
 			exit_mini(mini);
 		}
-		if (mini->input)
+		if (check_input_mlt_dollar(mini->input))
+			printf("successive $ entries not accepted sorry\n");
+		else if (mini->input)
 			launch_exec(mini, i);
 		free(mini->input);
 	}

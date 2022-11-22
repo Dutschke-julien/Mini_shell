@@ -6,7 +6,7 @@
 #    By: jdutschk <jdutschk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 16:02:27 by averon            #+#    #+#              #
-#    Updated: 2022/11/08 14:36:59 by jdutschk         ###   ########.fr        #
+#    Updated: 2022/11/22 14:02:31 by jdutschk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ HEADERS =	./
 		
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 all :		$(NAME)

@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:44:17 by averon            #+#    #+#             */
-/*   Updated: 2022/11/18 10:23:41 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/22 13:53:07 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ int			nbvar_env(char **env);
 char		**init_env(char **env);
 int			is_in_env(char **envp, char *str);
 void		print_env(char **envp, char *envp_name);
+int			check_input_mlt_dollar(char *str);
 
 // exec_utils
 char		*bin_dir_cat(t_core *mini);

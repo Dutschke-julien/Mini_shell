@@ -6,7 +6,7 @@
 /*   By: averon <averon@student.42Mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 12:52:36 by averon            #+#    #+#             */
-/*   Updated: 2022/11/16 17:33:06 by averon           ###   ########.fr       */
+/*   Updated: 2022/11/22 14:00:46 by jdutschk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	is_in_env(char **envp, char *str)
 
 	i = 0;
 	len = 0;
+	printf("[%s]\n", str);
 	if (str)
 		while (str[len] != '=' && str[len] != 0)
 			len++;
@@ -59,6 +60,22 @@ int	is_in_env(char **envp, char *str)
 	{
 		if (!ft_strncmp(envp[i], str, len)
 			&& (envp[i][len] == '=' || !envp[i][len]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	check_input_mlt_dollar(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		if (str[i] == '$' && str[i + 1] == '$')
 			return (1);
 		i++;
 	}
